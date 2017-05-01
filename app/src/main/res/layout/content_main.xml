@@ -5,6 +5,7 @@
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/language_background"
     android:orientation="vertical"
     android:weightSum="10"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -15,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
-        android:gravity="center_horizontal|center_vertical" >
+        android:gravity="center_horizontal|center_vertical">
 
         <ImageView
             android:id="@+id/global_visa"
@@ -27,152 +28,152 @@
     </LinearLayout>
 
 
-
-
     <LinearLayout
         android:id="@+id/language_selection"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
         android:layout_marginTop="@dimen/second_layout_margin_top"
+        android:layout_weight="6"
         android:orientation="vertical">
 
 
+        <LinearLayout
+            android:id="@+id/languages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/flag_left_margin"
+            android:layout_marginRight="@dimen/flag_left_margin"
+            android:orientation="horizontal">
+
             <LinearLayout
-                android:id="@+id/languages"
-                android:layout_width="match_parent"
+                android:id="@+id/english_language"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/english_language"
+                <ImageView
+                    android:id="@+id/english"
+                    android:layout_width="@dimen/language_image_width"
+                    android:layout_height="@dimen/language_image_height"
+                    android:background="@drawable/images_corner"
+                    android:elevation="6dp"
+                    android:src="@drawable/england" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/english"
-                        android:layout_width="@dimen/language_image_width"
-                        android:layout_height="@dimen/language_image_height"
-                        android:background="@drawable/images_corner"
-                        android:elevation="6dp"
-                        android:src="@drawable/england" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/language_text_margin_top"
-                        android:text="@string/first_language"
-                        android:textAllCaps="true"
-                        android:textSize="@dimen/language_text_size"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/russian_language"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/flag_left_margin"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/russian"
-                        android:layout_width="@dimen/language_image_width"
-                        android:layout_height="@dimen/language_image_height"
-                        android:background="@drawable/images_corner"
-                        android:elevation="6dp"
-                        android:src="@drawable/russian" />
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/language_text_margin_top"
-                        android:text="@string/second_language"
-                        android:textAllCaps="true"
-                        android:textSize="@dimen/language_text_size"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/israel_language"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/flag_left_margin"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/israel"
-                        android:layout_width="@dimen/language_image_width"
-                        android:layout_height="@dimen/language_image_height"
-                        android:background="@drawable/images_corner"
-                        android:elevation="6dp"
-                        android:src="@drawable/hebrow" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/language_text_margin_top"
-                        android:text="@string/third_language"
-                        android:textAllCaps="true"
-                        android:textSize="@dimen/language_text_size"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/german_language"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/flag_left_margin"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:id="@+id/german"
-                        android:layout_width="@dimen/language_image_width"
-                        android:layout_height="@dimen/language_image_height"
-                        android:background="@drawable/images_corner"
-                        android:elevation="6dp"
-                        android:src="@drawable/deutsche" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/language_text_margin_top"
-                        android:text="@string/fourth_language"
-                        android:textAllCaps="true"
-                        android:textSize="@dimen/language_text_size"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/language_text_margin_top"
+                    android:text="@string/first_language"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/language_text_size"
+                    android:textStyle="bold" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/russian_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/russian"
+                    android:layout_width="@dimen/language_image_width"
+                    android:layout_height="@dimen/language_image_height"
+                    android:background="@drawable/images_corner"
+                    android:elevation="6dp"
+                    android:src="@drawable/russian" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/language_text_margin_top"
+                    android:text="@string/second_language"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/language_text_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/israel_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/israel"
+                    android:layout_width="@dimen/language_image_width"
+                    android:layout_height="@dimen/language_image_height"
+                    android:background="@drawable/images_corner"
+                    android:elevation="6dp"
+                    android:src="@drawable/hebrow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/language_text_margin_top"
+                    android:text="@string/third_language"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/language_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/linear_layout_margin_top"
-            android:gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/flag_left_margin"
+            android:layout_marginRight="@dimen/flag_left_margin"
             android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/german_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/german"
+                    android:layout_width="@dimen/language_image_width"
+                    android:layout_height="@dimen/language_image_height"
+                    android:background="@drawable/images_corner"
+                    android:elevation="6dp"
+                    android:src="@drawable/deutsche" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/language_text_margin_top"
+                    android:text="@string/fourth_language"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/language_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/spanies_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/flag_left_margin"
+                android:layout_marginLeft="@dimen/layout_left_margin"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -194,6 +195,44 @@
                     android:textSize="@dimen/language_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/portugues_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/protugues"
+                    android:layout_width="@dimen/language_image_width"
+                    android:layout_height="@dimen/language_image_height"
+                    android:background="@drawable/images_corner"
+                    android:elevation="6dp"
+                    android:src="@drawable/portugues" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/language_text_margin_top"
+                    android:text="@string/eighth_language"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/language_text_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/linear_layout_margin_top"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/french_language"
@@ -226,7 +265,7 @@
                 android:id="@+id/arabic_language"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/flag_left_margin"
+                android:layout_marginLeft="@dimen/layout_left_margin"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -248,40 +287,7 @@
                     android:textSize="@dimen/language_text_size"
                     android:textStyle="bold" />
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/portugues_language"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/flag_left_margin"
-                android:layout_marginRight="@dimen/flag_left_margin"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/protugues"
-                    android:layout_width="@dimen/language_image_width"
-                    android:layout_height="@dimen/language_image_height"
-                    android:background="@drawable/images_corner"
-                    android:elevation="6dp"
-                    android:src="@drawable/portugues" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/language_text_margin_top"
-                    android:text="@string/eighth_language"
-                    android:textAllCaps="true"
-                    android:textSize="@dimen/language_text_size"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-
-
-
         </LinearLayout>
-
 
     </LinearLayout>
 
