@@ -5,15 +5,23 @@
     <!--landing page-->
 
     <dimen name="midel_image_width">600dp</dimen>
-    <dimen name="midel_image_height">340dp</dimen>
+    <dimen name="midel_image_height">440dp</dimen>
     <dimen name="language_image_width">95dp</dimen>
     <dimen name="language_image_height">58dp</dimen>
     <dimen name="language_text_size">22sp</dimen>
     <dimen name="language_text_margin_top">9dp</dimen>
-    <dimen name="flag_left_margin">30dp</dimen>
+    <dimen name="flag_left_margin">18dp</dimen>
     <dimen name="flag_right_margin">30dp</dimen>
-    <dimen name="logo_image_margin_top">50dp</dimen>
+
+    <dimen name="logo_image_width">300dp</dimen>
+    <dimen name="logo_image_height">200dp</dimen>
+
+
+    <dimen name="logo_image_margin_top">10dp</dimen>
     <dimen name="logo_image_margin_left">60dp</dimen>
+
+    <dimen name="linear_layout_margin_top">45dp</dimen>
+    <dimen name="second_layout_margin_top">65dp</dimen>
 
 
 

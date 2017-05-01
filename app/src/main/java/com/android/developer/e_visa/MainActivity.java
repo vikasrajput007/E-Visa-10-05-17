@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
           bitmap7 = BitmapFactory.decodeResource(this.getResources(),R.drawable.arbic);
           bitmap8 = BitmapFactory.decodeResource(this.getResources(),R.drawable.portugues);
 
-        england.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap, 40));
-        russian.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap2, 40));
-        israel.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap3, 40));
-        german.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap4, 40));
-        spanies.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap5, 40));
-        french.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap6, 40));
-        arabic.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap7, 40));
-        protugues.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap8, 40));
+        england.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap, 10));
+        russian.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap2, 10));
+        israel.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap3, 10));
+        german.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap4, 10));
+        spanies.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap5, 10));
+        french.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap6, 10));
+        arabic.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap7, 10));
+        protugues.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap8, 10));
 
 //        RoundedBitmapDrawable roundedBitmapDrawable= RoundedBitmapDrawableFactory.create(getResources(),bitmap);
 //        roundedBitmapDrawable.setCornerRadius(32);
