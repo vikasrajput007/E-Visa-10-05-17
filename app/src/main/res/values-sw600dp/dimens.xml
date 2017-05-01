@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--landing page-->
+
+    <dimen name="midel_image_width">600dp</dimen>
+    <dimen name="midel_image_height">340dp</dimen>
+    <dimen name="language_image_width">95dp</dimen>
+    <dimen name="language_image_height">58dp</dimen>
+    <dimen name="language_text_size">22sp</dimen>
+    <dimen name="language_text_margin_top">9dp</dimen>
+    <dimen name="flag_left_margin">30dp</dimen>
+    <dimen name="flag_right_margin">30dp</dimen>
+    <dimen name="logo_image_margin_top">50dp</dimen>
+    <dimen name="logo_image_margin_left">60dp</dimen>
+
+
+
+
+
+</resources>

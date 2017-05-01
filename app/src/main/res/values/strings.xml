@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">E-Visa</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!--landing page-->
+    <string name="first_language">English</string>
+    <string name="second_language">РОССИЯ</string>
+    <string name="third_language">עברית</string>
+    <string name="fourth_language">deutsche</string>
+    <string name="fifth_language">espanol</string>
+    <string name="sixth_language">FRANÇAIS</string>
+    <string name="seventh_language">ى.ص</string>
+    <string name="eighth_language">PORTUGUÊS</string>
+
+
+</resources>
