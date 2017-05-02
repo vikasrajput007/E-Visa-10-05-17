@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SelectDestination">
-
-        </activity>
+            android:name=".SelectDestination"
+            android:label="@string/title_activity_select_destination"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

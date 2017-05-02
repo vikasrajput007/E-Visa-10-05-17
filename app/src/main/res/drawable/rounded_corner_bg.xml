@@ -7,7 +7,7 @@
 
     <!-- view border color and width -->
     <stroke
-        android:width="4px"
+        android:width="2px"
         android:color="@color/rounded_corner_stroke"></stroke>
 
     <!-- If you want to add some padding -->

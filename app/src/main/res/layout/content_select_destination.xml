@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,137 +9,136 @@
     tools:context="com.android.developer.e_visa.SelectDestination"
     tools:showIn="@layout/activity_select_destination">
 
-    <ScrollView
-        android:layout_width="395dp"
-        android:layout_height="587dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        android:scrollbars="none"
-        tools:ignore="MissingConstraints">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/global_visa"
+            android:layout_width="@dimen/select_destination_logo_image_width"
+            android:layout_height="@dimen/select_destination_logo_image_height"
+            android:src="@drawable/logo" />
+
+    </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content">
+                android:layout_height="175dp"
+                android:src="@drawable/destination_banner"/>
 
-                <ImageView
-                    android:id="@+id/global_visa"
-                    android:layout_width="@dimen/select_destination_logo_image_width"
-                    android:layout_height="@dimen/select_destination_logo_image_height"
-                    android:src="@drawable/logo" />
 
-            </LinearLayout>
+            <TextView
 
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="175dp"
-                    android:src="@drawable/destination_banner"/>
+                android:gravity="center_horizontal"
+                android:textAllCaps="true"
+                android:textSize="15sp"
+                android:text="Select your destination and nationality"
+                android:textStyle="bold" />
 
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:textAllCaps="true"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_corner_bg" />
 
 
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_corner_bg" />
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_corner_bg" />
 
 
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_corner_bg" />
-
-
-                <Button
-                    android:layout_width="80dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/air"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center_horizontal"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="start"
-                    android:text="Global e-Visas"
-                    android:textSize="15sp" />
-
-                <view
-                    android:layout_width="match_parent"
-                    android:layout_height="2px">
-
-
-                </view>
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="start"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center_horizontal"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:gravity="center_horizontal"
-                    android:textSize="15sp" />
-
-
-            </LinearLayout>
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/air"/>
 
 
         </LinearLayout>
 
-    </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="No stress going to Embassy. Visa in email, start packing!"
+                android:gravity="center_horizontal"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="start"
+                android:text="Global e-Visas"
+                android:textSize="15sp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:background="#000000"
+                android:layout_height="1px">
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="start"
+                android:text="Global e-Visas is a one stop online visa company specializing in facilitating travel Visas for the countries with provision for a eVisa or electronic visa; a visa that can be simply printed and carried along with your passport for travel. Global e-Visas is headquatered in the tech city of San Francisco(USA) and is being managed by a set of travel professionals with over three decades of experience in travel industry. "
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Our website provides easy to follow steps, without any fear of mistakes in the actual government   visa application, in major languages of the world. Fill in the application form in the language you are comfortable in, and our multi lingual visa processing consultants take care of the rest. "
+                android:gravity="center_horizontal"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:text="Global e-Visas is not affiliated with any government embassy/consulate/high commission; and is a private company specializing in electronic travel visa service."
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+
+</LinearLayout>
+
+
+</ScrollView>
+
+</LinearLayout>
