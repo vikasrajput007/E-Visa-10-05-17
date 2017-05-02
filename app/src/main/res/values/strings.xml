@@ -14,4 +14,14 @@
     <string name="eighth_language">PORTUGUÊS</string>
 
 
+    <string name="string_for_select_language">Select a Language  \u0020 \u0020  Выберите язык   \u0020 \u0020  בחר שפה  \u0020 \u0020  Sélectionnez une langue    \u0020 \u0020    Wählen Sie eine   \u0020 \u0020   Sprache choisissez votre langue   \u0020 \u0020  اختر لغة   \u0020 \u0020   Selecione um Idioma</string>
+
+
+
+
+    <!--for select destination page-->
+    <string name="home">HOME</string>
+    <string name="check_visa_status">CHECK VISA STATUS</string>
+    <string name="contact_us">CONTACT US</string>
+
 </resources>

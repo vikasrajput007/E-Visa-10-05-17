@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.lang.annotation.Target;
 
@@ -27,12 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView  england,russian,israel,german,spanies,french,arabic,protugues;
     Bitmap bitmap,bitmap2,bitmap3,bitmap4,bitmap5,bitmap6,bitmap7,bitmap8;
+    TextView select_language;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         england = (ImageView)findViewById(R.id.english);
         russian = (ImageView)findViewById(R.id.russian);
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         french = (ImageView)findViewById(R.id.french);
         arabic = (ImageView)findViewById(R.id.arabic);
         protugues = (ImageView)findViewById(R.id.protugues);
+        select_language = (TextView)findViewById(R.id.select_language);
+        select_language.setSelected(true);
 
 
           bitmap = BitmapFactory.decodeResource(this.getResources(),R.drawable.england);
