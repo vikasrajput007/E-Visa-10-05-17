@@ -6,4 +6,5 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorElevation">#e4dede</color>
     <color name="language_background">#faf5f5</color>
+    <color name="rounded_corner_stroke">#5ec8f2</color>
 </resources>
