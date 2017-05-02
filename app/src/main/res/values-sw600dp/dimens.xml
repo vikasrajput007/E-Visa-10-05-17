@@ -11,7 +11,7 @@
     <dimen name="language_text_size">22sp</dimen>
     <dimen name="language_text_margin_top">9dp</dimen>
     <dimen name="flag_left_margin">18dp</dimen>
-    <dimen name="flag_right_margin">30dp</dimen>
+    <dimen name="flag_right_margin">25dp</dimen>
 
     <dimen name="layout_left_margin">60dp</dimen>
 
@@ -22,7 +22,8 @@
     <dimen name="logo_image_margin_left">60dp</dimen>
 
     <dimen name="linear_layout_margin_top">45dp</dimen>
-    <dimen name="second_layout_margin_top">30dp</dimen>
+    <dimen name="second_layout_margin_top">20dp</dimen>
+    <dimen name="second_layout_margin_bottom">20dp</dimen>
 
 
 

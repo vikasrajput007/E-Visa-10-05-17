@@ -10,7 +10,7 @@
     <dimen name="language_text_size">14sp</dimen>
     <dimen name="language_text_margin_top">5dp</dimen>
     <dimen name="flag_left_margin">15dp</dimen>
-    <dimen name="flag_right_margin">20dp</dimen>
+    <dimen name="flag_right_margin">15dp</dimen>
 
     <dimen name="layout_left_margin">32dp</dimen>
 
@@ -20,7 +20,8 @@
     <dimen name="logo_image_margin_left">45dp</dimen>
 
     <dimen name="linear_layout_margin_top">25dp</dimen>
-    <dimen name="second_layout_margin_top">20dp</dimen>
+    <dimen name="second_layout_margin_top">10dp</dimen>
+    <dimen name="second_layout_margin_bottom">10dp</dimen>
 
 
 

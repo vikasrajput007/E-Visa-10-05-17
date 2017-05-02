@@ -33,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/second_layout_margin_top"
+        android:layout_marginBottom="@dimen/second_layout_margin_bottom"
         android:layout_weight="6"
         android:orientation="vertical">
 
@@ -42,15 +43,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginRight="@dimen/flag_right_margin"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/english_language"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginLeft="@dimen/flag_left_margin"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
@@ -139,17 +141,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
+            android:layout_marginRight="@dimen/flag_right_margin"
+
             android:layout_marginTop="@dimen/linear_layout_margin_top"
             android:orientation="horizontal">
 
 
             <LinearLayout
                 android:id="@+id/german_language"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginLeft="@dimen/flag_left_margin"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
