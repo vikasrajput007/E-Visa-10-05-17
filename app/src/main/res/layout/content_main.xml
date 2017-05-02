@@ -41,16 +41,16 @@
             android:id="@+id/languages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/flag_left_margin"
-            android:layout_marginRight="@dimen/flag_left_margin"
+            android:weightSum="3"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/english_language"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:layout_marginLeft="@dimen/flag_left_margin"
                 android:orientation="vertical">
 
                 <ImageView
@@ -75,9 +75,10 @@
 
             <LinearLayout
                 android:id="@+id/russian_language"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:layout_marginLeft="@dimen/flag_left_margin"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -104,9 +105,10 @@
 
             <LinearLayout
                 android:id="@+id/israel_language"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:layout_marginLeft="@dimen/flag_left_margin"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -136,18 +138,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="3"
             android:layout_marginTop="@dimen/linear_layout_margin_top"
-            android:layout_marginLeft="@dimen/flag_left_margin"
-            android:layout_marginRight="@dimen/flag_left_margin"
             android:orientation="horizontal">
 
 
             <LinearLayout
                 android:id="@+id/german_language"
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:layout_marginLeft="@dimen/flag_left_margin"
                 android:orientation="vertical">
 
                 <ImageView
@@ -171,9 +173,10 @@
 
             <LinearLayout
                 android:id="@+id/spanies_language"
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:layout_marginLeft="@dimen/flag_left_margin"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -199,9 +202,10 @@
 
             <LinearLayout
                 android:id="@+id/portugues_language"
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_left_margin"
+                android:layout_marginLeft="@dimen/flag_left_margin"
                 android:gravity="center"
                 android:orientation="vertical">
 
