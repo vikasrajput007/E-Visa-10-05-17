@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.android.developer.e_visa.SelectDestination"
-    android:orientation="vertical"
     tools:showIn="@layout/activity_select_destination">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/layout_margin_top"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
             <LinearLayout
@@ -35,43 +46,53 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/moving_image_height"
-                    android:src="@drawable/destination_banner" />
+                    android:src="@drawable/banner4" />
 
 
                 <TextView
 
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/select_destination_text_width"
+                    android:layout_height="@dimen/select_destination_text_height"
                     android:gravity="center_horizontal"
                     android:text="Select your destination and nationality"
                     android:textAllCaps="true"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/select_destination_text_size"
                     android:textStyle="bold" />
 
 
                 <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_corner_bg" />
+                    android:layout_width="@dimen/destination_text_field_width"
+                    android:layout_height="@dimen/destination_text_field_height"
+                    android:layout_marginTop="@dimen/destination_text_field_margin_top"
+                    android:background="@drawable/rounded_corner_bg"
+                    android:hint="@string/select_destination" />
 
 
                 <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_corner_bg" />
+                    android:layout_width="@dimen/destination_text_field_width"
+                    android:layout_height="@dimen/destination_text_field_height"
+                    android:layout_marginTop="@dimen/destination_text_field_margin_top"
+                    android:background="@drawable/rounded_corner_bg"
+                    android:hint="@string/select_nationality" />
 
 
-                <Button
-                    android:layout_width="80dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/air" />
+                <ImageView
+                    android:id="@+id/submit"
+                    android:layout_width="@dimen/sunbmit_button_width"
+                    android:layout_height="@dimen/sunbmit_button_height"
+                    android:layout_marginTop="@dimen/submit_margin_margin_top"
+                    android:elevation="6dp"
+                    android:onClick="selectDestination"
+                    android:src="@drawable/air" />
 
 
             </LinearLayout>
 
 
         </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
 

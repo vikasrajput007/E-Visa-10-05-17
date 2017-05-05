@@ -21,6 +21,10 @@
         <activity
             android:name=".SelectDestination"
             android:label="@string/title_activity_select_destination"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DestinationCountryActivity"
+            android:label="@string/title_activity_destination_country"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

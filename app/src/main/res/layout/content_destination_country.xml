@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.android.developer.e_visa.DestinationCountryActivity"
+    tools:showIn="@layout/activity_destination_country">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/global_visa"
+                    android:layout_width="@dimen/select_destination_logo_image_width"
+                    android:layout_height="@dimen/select_destination_logo_image_height"
+                    android:src="@drawable/logo" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/moving_image_height"
+                    android:src="@drawable/banner5" />
+
+
+                <TextView
+
+                    android:layout_width="@dimen/select_destination_text_width"
+                    android:layout_height="@dimen/select_destination_text_height"
+                    android:gravity="center_horizontal"
+                    android:text="Select your destination and nationality"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/select_destination_text_size"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:layout_width="@dimen/destination_text_field_width"
+                    android:layout_height="@dimen/destination_text_field_height"
+                    android:layout_marginTop="@dimen/destination_text_field_margin_top"
+                    android:background="@drawable/rounded_corner_bg"
+                    android:hint="@string/select_destination" />
+
+
+                <EditText
+                    android:layout_width="@dimen/destination_text_field_width"
+                    android:layout_height="@dimen/destination_text_field_height"
+                    android:layout_marginTop="@dimen/destination_text_field_margin_top"
+                    android:background="@drawable/rounded_corner_bg"
+                    android:hint="@string/select_nationality" />
+
+
+                <ImageButton
+                    android:id="@+id/submit"
+                    android:layout_width="@dimen/sunbmit_button_width"
+                    android:layout_height="@dimen/sunbmit_button_height"
+                    android:layout_marginTop="@dimen/submit_margin_margin_top"
+                    android:src="@drawable/air" />
+
+
+                <ImageView
+                    android:id="@+id/selected_country_flag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/country_name_margin_top" />
+
+
+                <TextView
+                    android:id="@+id/country_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/country_name_margin_top"
+                    android:text="USA"
+                    android:textColor="@color/background_color"
+                    android:textSize="@dimen/country_name_text_size" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_marginTop="@dimen/country_name_margin_top"
+                    android:textColor="@color/background_color"></View>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/guideline_layout_height"
+                    android:layout_marginTop="@dimen/country_name_margin_top"
+                    android:background="@drawable/guideline_gradient"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guideline"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/country_name_text_size" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/guideline_layout_height"
+                    android:layout_marginTop="@dimen/country_name_margin_top"
+                    android:background="@drawable/guideline_gradient"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fees Details"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/country_name_text_size" />
+
+
+                </LinearLayout>
+
+
+                <ImageButton
+                    android:layout_width="180dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="@dimen/country_name_margin_top"
+                    android:background="@drawable/now_apply_selector"
+                    android:text="Apply Now"
+                    android:textColor="@color/colorWhite" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/guideline_layout_height"
+                    android:layout_marginTop="@dimen/country_name_margin_top"
+                    android:background="@drawable/guideline_gradient"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Requirment For Applying Visa"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/country_name_text_size" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
