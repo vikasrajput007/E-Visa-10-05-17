@@ -8,7 +8,7 @@
     <color name="language_background">#faf5f5</color>
     <color name="rounded_corner_stroke">#5ec8f2</color>
     <color name="background_color">#000000</color>
-    <color name="center_color">#0D47A1</color>
-    <color name="normal_bg_color">#3f7ec6</color>
+    <color name="center_color">#0d47a1</color>
+    <color name="normal_bg_color">#0d47a1</color>
 
 </resources>

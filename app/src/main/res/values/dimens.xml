@@ -55,6 +55,10 @@
     <dimen name="country_name_text_size">18sp</dimen>
     <dimen name="country_name_margin_top">8dp</dimen>
     <dimen name="guideline_layout_height">60dp</dimen>
+    <dimen name="apply_now_width">180dp</dimen>
+    <dimen name="apply_now_height">60dp</dimen>
+    <dimen name="apply_now_text_size">16sp</dimen>
+    <dimen name="country_detail_text_size">21sp</dimen>
 
 
 </resources>

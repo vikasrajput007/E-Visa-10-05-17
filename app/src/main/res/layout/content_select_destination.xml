@@ -46,7 +46,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/moving_image_height"
-                    android:src="@drawable/banner4" />
+                    android:src="@drawable/banner6" />
 
 
                 <TextView
@@ -82,7 +82,6 @@
                     android:layout_height="@dimen/sunbmit_button_height"
                     android:layout_marginTop="@dimen/submit_margin_margin_top"
                     android:elevation="6dp"
-                    android:onClick="selectDestination"
                     android:src="@drawable/air" />
 
 

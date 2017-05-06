@@ -56,6 +56,10 @@
     <dimen name="country_name_text_size">24sp</dimen>
     <dimen name="country_name_margin_top">18dp</dimen>
     <dimen name="guideline_layout_height">90dp</dimen>
+    <dimen name="apply_now_width">240dp</dimen>
+    <dimen name="apply_now_height">80dp</dimen>
+    <dimen name="apply_now_text_size">23sp</dimen>
+    <dimen name="country_detail_text_size">30sp</dimen>
 
 
 </resources>

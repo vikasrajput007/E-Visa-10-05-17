@@ -17,7 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
-public class SelectDestination extends AppCompatActivity {
+public class SelectDestination extends AppCompatActivity implements View.OnClickListener{
 
     ImageView air;
     Bitmap bitmap;
@@ -29,10 +29,18 @@ public class SelectDestination extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         air = (ImageView)findViewById(R.id.submit);
+        air.setOnClickListener(this);
 
         bitmap = BitmapFactory.decodeResource(this.getResources(),R.drawable.air);
         air.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap, 25));
 
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        Intent i = new Intent(SelectDestination.this,DestinationCountryActivity.class);
+        startActivity(i);
     }
 
 
@@ -61,11 +69,4 @@ public class SelectDestination extends AppCompatActivity {
     }
 
 
-    public void selectDestination(View v){
-
-        Intent i = new Intent(SelectDestination.this,DestinationCountryActivity.class);
-        startActivity(i);
-
-
-    }
 }
