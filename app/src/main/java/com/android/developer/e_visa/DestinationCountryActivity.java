@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class DestinationCountryActivity extends AppCompatActivity {
 
-     Button button;
+     RelativeLayout button;
     ImageView apply_now;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class DestinationCountryActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        button = (Button)findViewById(R.id.apply_now);
+        button = (RelativeLayout)findViewById(R.id.apply_now);
 
 
 

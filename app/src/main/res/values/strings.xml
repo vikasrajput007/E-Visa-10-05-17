@@ -25,6 +25,12 @@
     <string name="select_nationality">Select Nationality</string>
     <string name="title_activity_select_destination">SelectDestination</string>
     <string name="title_activity_destination_country">DestinationCountryActivity</string>
+    <string name="text_detail">information detail</string>
+    <string name="text_bullet">\u25CF  text_detail </string>
+
+
+    <!--iconography-->
+<string name="send_to">&#xf1d9;</string>
 
 
 </resources>

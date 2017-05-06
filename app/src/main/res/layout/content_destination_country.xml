@@ -52,6 +52,7 @@
 
                     android:layout_width="@dimen/select_destination_text_width"
                     android:layout_height="@dimen/select_destination_text_height"
+                    android:layout_marginTop="@dimen/country_select_your_destination_margin_top"
                     android:gravity="center_horizontal"
                     android:text="Select your destination and nationality"
                     android:textAllCaps="true"
@@ -151,6 +152,7 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
@@ -194,25 +196,34 @@
 
                 </LinearLayout>
 
-                <!--<ImageView-->
-                <!--android:id="@+id/apply_now"-->
-                <!--android:layout_width="@dimen/apply_now_width"-->
-                <!--android:layout_height="@dimen/apply_now_height"-->
-                <!--android:layout_marginTop="@dimen/country_name_margin_top"-->
-                <!--android:elevation="7dp"-->
-                <!--android:onClick="applyForVisa"-->
-                <!--android:src="@drawable/image_change_bg" />-->
-                <Button
+                <RelativeLayout
                     android:id="@+id/apply_now"
                     android:layout_width="@dimen/apply_now_width"
                     android:layout_height="@dimen/apply_now_height"
                     android:layout_marginTop="@dimen/country_name_margin_top"
                     android:background="@drawable/now_apply_selector"
-                    android:text="Apply Now"
-                    android:textAllCaps="false"
-                    android:drawableLeft="@drawable/image_change_bg"
-                    android:textColor="@drawable/icon_color_hover_bg"
-                    android:textSize="@dimen/apply_now_text_size" />
+                    android:clickable="true"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/arrow"
+                        android:layout_width="@dimen/apply_now_image_width"
+                        android:layout_height="@dimen/apply_now_image_height"
+                        android:src="@drawable/image_change_bg" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/apply_now_text_margin_left"
+                        android:layout_marginTop="@dimen/apply_now_text_margin_top"
+                        android:layout_toRightOf="@+id/arrow"
+                        android:foregroundGravity="center_vertical"
+                        android:text="Apply Now"
+                        android:textColor="@drawable/icon_color_hover_bg"
+                        android:textSize="@dimen/apply_now_text_size" />
+
+
+                </RelativeLayout>
 
 
                 <LinearLayout
@@ -226,12 +237,74 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Requirment For Applying Visa"
+                        android:text="Requirments For Applying Visa"
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/country_detail_text_size" />
 
 
                 </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/second_layout_margin_bottom"
+                    android:layout_marginTop="@dimen/requirement_detail_top_margin"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/requirement_image_height_width"
+                        android:layout_height="@dimen/requirement_image_height_width"
+                        android:src="@drawable/contract" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/requirement_text_margin_left"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/first_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/text_bullet"
+                            android:textColor="@color/background_color"
+                            android:textSize="@dimen/requirement_text_size" />
+
+                        <TextView
+                            android:id="@+id/second_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
+                            android:text="@string/text_bullet"
+                            android:textColor="@color/background_color"
+                            android:textSize="@dimen/requirement_text_size" />
+
+                        <TextView
+                            android:id="@+id/third_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
+                            android:text="@string/text_bullet"
+                            android:textColor="@color/background_color"
+                            android:textSize="@dimen/requirement_text_size" />
+
+                        <TextView
+                            android:id="@+id/fourth_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
+                            android:text="@string/text_bullet"
+                            android:textColor="@color/background_color"
+                            android:textSize="@dimen/requirement_text_size" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
 

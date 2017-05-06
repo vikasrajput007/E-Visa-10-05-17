@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/hover_bg" android:state_selected="true"></item>
-    <item android:drawable="@drawable/hover_bg" android:state_pressed="true"></item>
-    <item android:drawable="@drawable/normal_bg"></item>
+
+    <item android:state_pressed="true"
+        android:drawable="@drawable/hover_bg">
+        <shape>
+
+            <corners android:radius="7dp"></corners>
+        </shape>
+
+
+    </item>
+
+    <item android:state_selected="true"
+        android:drawable="@drawable/hover_bg">
+        <shape>
+
+            <corners android:radius="7dp"></corners>
+        </shape>
+    </item>
+
+    <item android:drawable="@drawable/normal_bg">
+
+        <shape>
+
+            <corners android:radius="7dp"></corners>
+        </shape>
+    </item>
+
+
 
 
 </selector>
