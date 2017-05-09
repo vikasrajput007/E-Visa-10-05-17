@@ -56,8 +56,8 @@
     <dimen name="country_name_text_size">24sp</dimen>
     <dimen name="country_name_margin_top">18dp</dimen>
     <dimen name="country_select_your_destination_margin_top">15dp</dimen>
-    <dimen name="guideline_layout_height">90dp</dimen>
-    <dimen name="apply_now_width">300dp</dimen>
+    <dimen name="guideline_layout_height">80dp</dimen>
+    <dimen name="apply_now_width">270dp</dimen>
     <dimen name="apply_now_height">80dp</dimen>
     <dimen name="apply_now_image_width">45dp</dimen>
     <dimen name="apply_now_image_height">50dp</dimen>
@@ -65,11 +65,26 @@
     <dimen name="apply_now_image_margin_left">14dp</dimen>
     <dimen name="apply_now_text_margin_left">22dp</dimen>
     <dimen name="apply_now_text_margin_top">12sp</dimen>
-    <dimen name="country_detail_text_size">30sp</dimen>
+    <dimen name="country_detail_text_size">25sp</dimen>
     <dimen name="requirement_detail_top_margin">30dp</dimen>
     <dimen name="requirement_image_height_width">145dp</dimen>
     <dimen name="requirement_text_margin_left">55dp</dimen>
     <dimen name="requirement_text_detail_margin_top">10dp</dimen>
     <dimen name="requirement_text_size">15dp</dimen>
+
+
+    <dimen name="fees_detail_larger_layout_width">375dp</dimen>
+    <dimen name="fees_detail_smaller_layout_width">195dp</dimen>
+    <dimen name="fees_detail_larger_layout_height">90dp</dimen>
+    <dimen name="fees_detail_margin_top">25dp</dimen>
+
+    <dimen name="image_icon_height">105dp</dimen>
+    <dimen name="image_icon_width">115dp</dimen>
+    <dimen name="image_icon_margin_left">50dp</dimen>
+    <dimen name="image_icon_text_size">16sp</dimen>
+    <dimen name="icon_text_margin">12dp</dimen>
+
+    <dimen name="icon_text_height">50dp</dimen>
+    <dimen name="icon_text_width">50dp</dimen>
 
 </resources>
