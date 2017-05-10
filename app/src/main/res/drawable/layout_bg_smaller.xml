@@ -8,18 +8,11 @@
         </shape>
     </item>
 
-    <item android:left="1dp">
-        <shape android:shape="rectangle">
-            <stroke android:color="@color/layout_bg_color"
-                android:width="1.5px">
-                </stroke>
-        </shape>
-    </item>
 
     <item android:top="1dp">
         <shape android:shape="rectangle">
             <stroke android:color="@color/layout_bg_color"
-                android:width="0.9px">
+                android:width="0.7px">
             </stroke>
         </shape>
     </item>
@@ -27,10 +20,12 @@
     <item android:right="1dp">
         <shape android:shape="rectangle">
             <stroke android:color="@color/layout_bg_color"
-                android:width="1px">
+                android:width="1.5px">
             </stroke>
         </shape>
     </item>
+
+
 
 
 </layer-list>

@@ -9,18 +9,24 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class SelectDestination extends AppCompatActivity implements View.OnClickListener{
+public class SelectDestination extends AppCompatActivity implements View.OnClickListener {
 
     ImageView air;
     Bitmap bitmap;
+    Spinner spinner,spinner2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,18 +34,50 @@ public class SelectDestination extends AppCompatActivity implements View.OnClick
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        air = (ImageView)findViewById(R.id.submit);
+        spinner = (Spinner) findViewById(R.id.simpleSpinner);
+        spinner2 = (Spinner) findViewById(R.id.simpleSpinner2);
+
+
+        if(Build.VERSION.SDK_INT>=21){
+//            spinner.setBackgroundTintList(Resources.c);
+        }
+        spinner.setOnItemSelectedListener(new ItemSelectedListener());
+        air = (ImageView) findViewById(R.id.submit);
         air.setOnClickListener(this);
 
-        bitmap = BitmapFactory.decodeResource(this.getResources(),R.drawable.air);
+        bitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.air);
         air.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap, 25));
 
     }
 
+    public class ItemSelectedListener implements AdapterView.OnItemSelectedListener {
+
+        //get strings of first item
+        String firstItem = String.valueOf(spinner.getSelectedItem());
+
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            if (firstItem.equals(String.valueOf(spinner.getSelectedItem()))) {
+                // ToDo when first item is selected
+            } else {
+                Toast.makeText(parent.getContext(),
+                        "You have selected : " + parent.getItemAtPosition(pos).toString(),
+                        Toast.LENGTH_LONG).show();
+                // Todo when item is selected by the user
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg) {
+
+        }
+
+    }
+
+
     @Override
     public void onClick(View v) {
 
-        Intent i = new Intent(SelectDestination.this,DestinationCountryActivity.class);
+        Intent i = new Intent(SelectDestination.this, DestinationCountryActivity.class);
         startActivity(i);
     }
 
@@ -67,6 +105,7 @@ public class SelectDestination extends AppCompatActivity implements View.OnClick
             return output;
         }
     }
-
-
 }
+
+
+

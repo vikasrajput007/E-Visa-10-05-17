@@ -34,4 +34,25 @@
 <string name="send_to">&#xf1d9;</string>
 
 
+
+    <string-array name="android_dropdown_arrays">
+        <item>Select a Destination</item>
+        <item>Armenia</item>
+        <item>Australia</item>
+        <item>Bahrain</item>
+        <item>Combodia</item>
+        <item>Canada</item>
+        <item>Dubai</item>
+        <item>India</item>
+        <item>Kenya</item>
+        <item>Singapur</item>
+        <item>Sri Lanka</item>
+        <item>Taiwan</item>
+        <item>Turkey</item>
+        <item>USA</item>
+    </string-array>
+
+
+
+
 </resources>
