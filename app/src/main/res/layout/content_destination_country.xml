@@ -61,21 +61,25 @@
                     android:textStyle="bold" />
 
 
-                <EditText
-                    android:id="@+id/editText"
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/simpleSpinner"
                     android:layout_width="@dimen/destination_text_field_width"
                     android:layout_height="@dimen/destination_text_field_height"
                     android:layout_marginTop="@dimen/destination_text_field_margin_top"
-                    android:background="@drawable/rounded_corner_bg"
-                    android:hint="@string/select_destination" />
+                    android:entries="@array/android_dropdown_arrays"
+                    style="@style/spinner_style"
+                    android:popupBackground="@color/colorWhite"
+                    android:popupElevation="10dp"
+                    android:spinnerMode="dropdown"/>
 
 
-                <EditText
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/simpleSpinner2"
                     android:layout_width="@dimen/destination_text_field_width"
                     android:layout_height="@dimen/destination_text_field_height"
                     android:layout_marginTop="@dimen/destination_text_field_margin_top"
-                    android:background="@drawable/rounded_corner_bg"
-                    android:hint="@string/select_nationality" />
+                    style="@style/spinner_style"
+                    android:spinnerMode="dropdown" />
 
 
                 <ImageView
