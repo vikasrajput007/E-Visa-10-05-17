@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/country_name_margin_top"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_first_text_left"
+                android:text="Single Entry 30 day visa"
+                android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+
+            <LinearLayout
+                android:layout_width="2sp"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:layout_marginLeft="@dimen/dubai_fees_layout_left"
+                android:background="@color/layout_bg_color"></LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_second_text_left"
+                android:text="&#36; 160"
+                android:textSize="@dimen/select_destination_text_size" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_first_text_left"
+                android:text="Multiple Entry 30 day visa"
+                android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+
+            <LinearLayout
+                android:layout_width="2sp"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:layout_marginLeft="@dimen/dubai_fees_multiple_layout_left"
+                android:background="@color/layout_bg_color"></LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_second_text_left"
+                android:text="&#36; 160"
+                android:textSize="@dimen/select_destination_text_size" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_first_text_left"
+                android:text="Single Entry 90 day visa"
+                android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+
+            <LinearLayout
+                android:layout_width="2sp"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:layout_marginLeft="@dimen/dubai_fees_layout_left"
+                android:background="@color/layout_bg_color"></LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_second_text_left"
+                android:text="&#36; 160"
+                android:textSize="@dimen/select_destination_text_size" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_first_text_left"
+                android:text="Multiple Entry 30 day visa"
+                android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+
+            <LinearLayout
+                android:layout_width="2sp"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:layout_marginLeft="@dimen/dubai_fees_multiple_layout_left"
+                android:background="@color/layout_bg_color"></LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_second_text_left"
+                android:text="&#36; 160"
+                android:textSize="@dimen/select_destination_text_size" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_first_text_left"
+                android:text="Global Visa Service Fees"
+                android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+
+            <LinearLayout
+                android:layout_width="2sp"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:layout_marginLeft="@dimen/dubai_fees_global_visa_service_layout_left"
+                android:background="@color/layout_bg_color"></LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_second_text_left"
+                android:text="&#36; 160"
+                android:textSize="@dimen/select_destination_text_size" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_first_text_left"
+                android:text="Total"
+                android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dubai_fees_total_layout_left"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="2sp"
+                        android:layout_height="@dimen/fees_detail_larger_layout_height"
+                        android:background="@color/layout_bg_color"></LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/total_fees_text_left"
+                        android:text="Single Entry 30 day visa &#36; 160"
+                        android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="2sp"
+                        android:layout_height="@dimen/fees_detail_larger_layout_height"
+                        android:background="@color/layout_bg_color"></LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/total_fees_text_left"
+                        android:text="Multiple Entry 30 day visa &#36; 160"
+                        android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="2sp"
+                        android:layout_height="@dimen/fees_detail_larger_layout_height"
+                        android:background="@color/layout_bg_color"></LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/total_fees_text_left"
+                        android:text="Single Entry 90 day visa &#36; 160"
+                        android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/layout_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="2sp"
+                        android:layout_height="@dimen/fees_detail_larger_layout_height"
+                        android:background="@color/layout_bg_color"></LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/total_fees_text_left"
+                        android:text="Multiple Entry 30 day visa &#36; 160"
+                        android:textSize="@dimen/select_destination_text_size_for_dubai" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

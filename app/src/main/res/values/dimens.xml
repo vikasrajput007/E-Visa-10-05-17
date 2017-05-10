@@ -88,6 +88,17 @@
     <dimen name="process_layout_height">120dp</dimen>
     <dimen name="process_layout_padding_left">9dp</dimen>
     <dimen name="process_layout_padding_right">9dp</dimen>
+    <dimen name="sri_lanka_fee_detail_layout_height">100dp</dimen>
+
+    <dimen name="dubai_fees_first_text_left">35dp</dimen>
+    <dimen name="dubai_fees_layout_left">40dp</dimen>
+    <dimen name="dubai_fees_second_text_left">70dp</dimen>
+    <dimen name="dubai_fees_multiple_layout_left">29dp</dimen>
+    <dimen name="dubai_fees_global_visa_service_layout_left">35dp</dimen>
+    <dimen name="dubai_fees_total_layout_left">138dp</dimen>
+    <dimen name="select_destination_text_size_for_dubai">12sp</dimen>
+    <dimen name="total_fees_text_left">10dp</dimen>
+
 
 
 </resources>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/country_name_margin_top"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/fees_detail_larger_layout_width"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:background="@drawable/layout_bg"
+                android:gravity="center_horizontal|center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tourist Visa  "
+                    android:textSize="@dimen/select_destination_text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/fees_detail_smaller_layout_width"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:background="@drawable/layout_bg_smaller"
+                android:gravity="center_horizontal|center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&#36; 160"
+                    android:textSize="@dimen/select_destination_text_size" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/fees_detail_larger_layout_width"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:background="@drawable/layout_bg"
+                android:gravity="center_horizontal|center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bussiness Visa "
+                    android:textSize="@dimen/select_destination_text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/fees_detail_smaller_layout_width"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:background="@drawable/layout_bg_smaller"
+                android:gravity="center_horizontal|center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&#36; 160"
+                    android:textSize="@dimen/select_destination_text_size" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/fees_detail_larger_layout_width"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:background="@drawable/last_layout_bg"
+                android:gravity="center_horizontal|center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Global Visas Service Fees"
+                    android:textSize="@dimen/select_destination_text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="@dimen/fees_detail_smaller_layout_width"
+                android:layout_height="@dimen/fees_detail_larger_layout_height"
+                android:background="@drawable/last_layout_bg"
+                android:gravity="center_horizontal|center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&#36; 160"
+                    android:textSize="@dimen/select_destination_text_size" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/fees_detail_larger_layout_width"
+                android:layout_height="@dimen/sri_lanka_fee_detail_layout_height"
+                android:background="@drawable/last_layout_bg"
+                android:gravity="center_horizontal|center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:textSize="@dimen/select_destination_text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="@dimen/fees_detail_smaller_layout_width"
+                    android:layout_height="@dimen/fees_detail_larger_layout_height"
+                    android:background="@drawable/last_layout_bg"
+                    android:gravity="center_horizontal|center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tourist  &#36; 160"
+                        android:textSize="@dimen/select_destination_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="@dimen/fees_detail_smaller_layout_width"
+                    android:layout_height="@dimen/fees_detail_larger_layout_height"
+                    android:background="@drawable/last_layout_bg"
+                    android:gravity="center_horizontal|center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bussines &#36; 160"
+                        android:textSize="@dimen/select_destination_text_size" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
