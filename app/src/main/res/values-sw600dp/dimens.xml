@@ -15,7 +15,8 @@
 
     <dimen name="layout_left_margin">60dp</dimen>
 
-
+    <dimen name="scroll_margin_top">30dp</dimen>
+    <dimen name="select_language_margin_top">30dp</dimen>
     <dimen name="logo_image_width">340dp</dimen>
     <dimen name="logo_image_height">200dp</dimen>
     <dimen name="logo_image_margin_top">10dp</dimen>
@@ -67,8 +68,8 @@
     <dimen name="apply_now_text_margin_top">12sp</dimen>
     <dimen name="country_detail_text_size">25sp</dimen>
     <dimen name="requirement_detail_top_margin">30dp</dimen>
-    <dimen name="requirement_image_height_width">120dp</dimen>
-    <dimen name="requirement_text_margin_left">55dp</dimen>
+    <dimen name="requirement_image_height_width">105dp</dimen>
+    <dimen name="requirement_text_margin_left">45dp</dimen>
     <dimen name="requirement_text_detail_margin_top">10dp</dimen>
     <dimen name="requirement_text_size">15dp</dimen>
 

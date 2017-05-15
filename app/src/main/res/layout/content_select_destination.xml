@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/layout_margin_top"
+        android:layout_marginTop="@dimen/scroll_margin_top"
         android:scrollbars="none">
 
 
@@ -25,13 +26,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/global_visa"
-                    android:layout_width="@dimen/select_destination_logo_image_width"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/select_destination_logo_image_height"
-                    android:src="@drawable/logo" />
+                    android:src="@drawable/logo1" />
 
             </LinearLayout>
 
@@ -40,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="@dimen/select_language_margin_top"
                 android:orientation="vertical">
 
                 <ImageView
@@ -79,7 +82,10 @@
                     android:layout_width="@dimen/destination_text_field_width"
                     android:layout_height="@dimen/destination_text_field_height"
                     android:layout_marginTop="@dimen/destination_text_field_margin_top"
+                    android:entries="@array/android_dropdown_arrays_nationality"
                     style="@style/spinner_style"
+                    android:popupBackground="@color/colorWhite"
+                    android:popupElevation="10dp"
                     android:spinnerMode="dropdown" />
 
 

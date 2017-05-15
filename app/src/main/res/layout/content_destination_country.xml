@@ -12,6 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/scroll_margin_top"
         android:scrollbars="none">
 
 
@@ -24,13 +25,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/global_visa"
-                    android:layout_width="@dimen/select_destination_logo_image_width"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/select_destination_logo_image_height"
-                    android:src="@drawable/logo" />
+                    android:src="@drawable/logo1" />
 
             </LinearLayout>
 
@@ -38,6 +40,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/select_language_margin_top"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:weightSum="1">
@@ -46,55 +49,15 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/moving_image_height"
-                    android:src="@drawable/banner6" />
-
-
-                <TextView
-
-                    android:layout_width="@dimen/select_destination_text_width"
-                    android:layout_height="@dimen/select_destination_text_height"
-                    android:layout_marginTop="@dimen/country_select_your_destination_margin_top"
-                    android:gravity="center_horizontal"
-                    android:text="Select your destination and nationality"
-                    android:textAllCaps="true"
-                    android:textSize="@dimen/select_destination_text_size"
-                    android:textStyle="bold" />
-
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/simpleSpinner"
-                    android:layout_width="@dimen/destination_text_field_width"
-                    android:layout_height="@dimen/destination_text_field_height"
-                    android:layout_marginTop="@dimen/destination_text_field_margin_top"
-                    android:entries="@array/android_dropdown_arrays"
-                    style="@style/spinner_style"
-                    android:popupBackground="@color/colorWhite"
-                    android:popupElevation="10dp"
-                    android:spinnerMode="dropdown"/>
-
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/simpleSpinner2"
-                    android:layout_width="@dimen/destination_text_field_width"
-                    android:layout_height="@dimen/destination_text_field_height"
-                    android:layout_marginTop="@dimen/destination_text_field_margin_top"
-                    style="@style/spinner_style"
-                    android:spinnerMode="dropdown" />
-
-
-                <ImageView
-                    android:id="@+id/submit"
-                    android:layout_width="@dimen/sunbmit_button_width"
-                    android:layout_height="@dimen/sunbmit_button_height"
-                    android:layout_marginTop="@dimen/submit_margin_margin_top"
-                    android:elevation="6dp"
-                    android:src="@drawable/air" />
+                    android:scaleType="center"
+                    android:src="@drawable/indiabanner" />
 
 
                 <ImageView
                     android:id="@+id/selected_country_flag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:src="@drawable/indiaflag"
                     android:layout_marginTop="@dimen/country_name_margin_top" />
 
 
@@ -103,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/country_name_margin_top"
-                    android:text="USA"
+                    android:text="INDIA"
                     android:textColor="@color/background_color"
                     android:textSize="@dimen/country_name_text_size" />
 
@@ -137,6 +100,23 @@
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/country_detail_text_size"
                         android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_marginTop="30dp">
+
+
+                    <TextView
+                        android:id="@+id/guidline_text"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_height="wrap_content"/>
 
 
                 </LinearLayout>
@@ -206,7 +186,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="&#36; 160"
+                                android:text="&#36; 60"
                                 android:textSize="@dimen/select_destination_text_size" />
 
                         </LinearLayout>
@@ -244,7 +224,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="&#36; 160"
+                                android:text="&#36; 25"
                                 android:textSize="@dimen/select_destination_text_size" />
 
                         </LinearLayout>
@@ -282,7 +262,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="&#36; 160"
+                                android:text="&#36; 85"
                                 android:textSize="@dimen/select_destination_text_size" />
 
                         </LinearLayout>
@@ -372,7 +352,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Go To Dubai"
+                            android:text="Go To India"
                             android:textSize="@dimen/image_icon_text_size" />
                     </LinearLayout>
 
@@ -440,6 +420,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/second_layout_margin_bottom"
                     android:layout_marginTop="@dimen/requirement_detail_top_margin"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal">
 
@@ -467,7 +449,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
-                            android:text="@string/text_bullet"
+                            android:text="@string/text_bullet2"
                             android:textColor="@color/background_color"
                             android:textSize="@dimen/requirement_text_size" />
 
@@ -476,7 +458,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
-                            android:text="@string/text_bullet"
+                            android:text="@string/text_bullet3"
                             android:textColor="@color/background_color"
                             android:textSize="@dimen/requirement_text_size" />
 
@@ -485,7 +467,34 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
-                            android:text="@string/text_bullet"
+                            android:text="@string/text_bullet4"
+                            android:textColor="@color/background_color"
+                            android:textSize="@dimen/requirement_text_size" />
+
+                        <TextView
+                            android:id="@+id/fifth_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
+                            android:text="@string/text_bullet5"
+                            android:textColor="@color/background_color"
+                            android:textSize="@dimen/requirement_text_size" />
+
+                        <TextView
+                            android:id="@+id/sixth_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
+                            android:text="@string/text_bullet6"
+                            android:textColor="@color/background_color"
+                            android:textSize="@dimen/requirement_text_size" />
+
+                        <TextView
+                            android:id="@+id/seventh_line"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/requirement_text_detail_margin_top"
+                            android:text="@string/text_bullet7"
                             android:textColor="@color/background_color"
                             android:textSize="@dimen/requirement_text_size" />
 

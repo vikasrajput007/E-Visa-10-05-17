@@ -24,9 +24,15 @@
     <string name="select_destination">Select Destination</string>
     <string name="select_nationality">Select Nationality</string>
     <string name="title_activity_select_destination">SelectDestination</string>
-    <string name="title_activity_destination_country">DestinationCountryActivity</string>
+    <string name="title_activity_destination_country">India</string>
     <string name="text_detail">information detail</string>
-    <string name="text_bullet">\u25CF  text_detail </string>
+    <string name="text_bullet">\u25CF  Valid Passport (6 months of validity). </string>
+    <string name="text_bullet2">\u25CF  Answer simple personal questions. </string>
+    <string name="text_bullet3">\u25CF  Return Flight Tickets. </string>
+    <string name="text_bullet4">\u25CF  Must be able to support yourself during your visit. </string>
+    <string name="text_bullet5">\u25CF  Must be outside of Bahrain in order to apply for the eVisa </string>
+    <string name="text_bullet6">\u25CF  Must use your Bahrain eVisa within 30 days of its approval. </string>
+    <string name="text_bullet7">\u25CF  Credit/debit card or Paypal account. </string>
 
 
 
@@ -37,22 +43,62 @@
 
     <string-array name="android_dropdown_arrays">
         <item>Select a Destination</item>
+
+
+        <item>India</item>
+
+    </string-array>
+
+
+    <string-array name="android_dropdown_arrays_nationality">
+
+        <item>Select a nationality</item>
         <item>Armenia</item>
         <item>Australia</item>
         <item>Bahrain</item>
         <item>Combodia</item>
         <item>Canada</item>
         <item>Dubai</item>
+        <item>Gabon</item>
         <item>India</item>
         <item>Kenya</item>
         <item>Singapur</item>
         <item>Sri Lanka</item>
         <item>Taiwan</item>
         <item>Turkey</item>
+        <item>Uganda</item>
         <item>USA</item>
+
     </string-array>
 
+    <string name="guidline_detail">
+    \u25CF International Travelers whose sole objective of visiting India is \u0020 \u0020 recreation, sight-seeing, casual \n \u0020 \u0020 visit to meet friends or relatives, short duration medical \u0020 \u0020 treatment or casual business visit.\n\n
+    \u25CF Passport should have at least six months validity from the date \u0020 \u0020 of arrival in India. The \n \u0020 \u0020 passport should have at least two blank pages for stamping by \u0020 \u0020 the Immigration Officer.\n\n
+    \u25CF You should have lived at your current address for atleast 2 years.\n\n
+    \u25CF International Travelers should have return ticket or onward \u0020 \u0020 journey ticket, with sufficient \n \u0020 \u0020 money to spend during his/her stay in India.\n\n
+    \u25CF International Travelers having Pakistani Passport or Pakistani \u0020 \u0020 origin HAVE TO apply for regular \n \u0020 \u0020 Visa at Indian Mission in your respective jurisdiction/Country.\n\n
+    \u25CF Not available to Diplomatic/Official Passport Holders.\n\n
+    \u25CF Not available to individuals endorsed on Parent’s/Spouse’s \u0020 \u0020 Passport i.e. each individual should \n \u0020 \u0020 have a separate passport.\n\n
+    \u25CF Not available to International Travel Document holders.\n\n
+    \u25CF Scanned First Page of Passport, in PDF Format. Size of the PDF File should be in the range of\n \u0020 \u0020 Minimum 10KB to Max 300 KB\n\n
+    \u25CF The digital photograph to be uploaded along with the Visa application should meet the \n \u0020 \u0020 following requirements:\n
+    \u0020 \u0020 &#176; Format – JPEG\n\n
+    \u0020 \u0020 &#176;  Size -Minimum 10 KB to Maximum 1 MB\n
+    \u0020 \u0020 &#176;  The height and width of the Photo must be equal.\n
+    \u0020 \u0020 &#176;  Photo should present Full face, front view, eyes open.\n
+    \u0020 \u0020 &#176;  Center head within frame and present full head from top of hair to bottom of chin.\n
+    \u0020 \u0020 &#176;  Background should be plain light colored or white background.\n
+    \u0020 \u0020 &#176;  No shadows on the face or on the background.\n\n
+    \u25CF   Proof of Address(Any ONE of the following)\n
+    \u0020 \u0020 &#176;  Utility bill in your name- Water or Electricity bill or driving license or State ID or Lease \n \u0020 \u0020 Agreement. Any one of the Parents ID in case of Minors
 
+    </string>
+
+
+
+    <string name="guideline_detail2">
+                <ul><li> \u25CF International Travelers whose sole objective of visiting India is recreation, sight-seeing, casual visit to meet friends or relatives, short duration medical treatment or casual business visit.</li><li>\u25CF Passport should have at least six months validity from the date of arrival in India. The passport should have at least two blank pages for stamping by the Immigration Officer.</li><li>You should have lived at your current address for atleast 2 years.</li><li>International Travelers should have return ticket or onward journey ticket, with sufficient money to spend during his/her stay in India.</li><li>International Travelers having Pakistani Passport or Pakistani origin HAVE TO apply for regular Visa at Indian Mission in your respective jurisdiction/Country.</li><li>Not available to Diplomatic/Official Passport Holders.</li><li>Not available to individuals endorsed on Parent’s/Spouse’s Passport i.e. each individual should have a separate passport.</li><li>Not available to International Travel Document holders.</li></ul>
+                <ul><li>Scanned First Page of Passport, in PDF Format. Size of the PDF File should be in the range of Minimum 10KB to Max 300 KB</li><li>The digital photograph to be uploaded along with the Visa application should meet the following requirements:<ul><li>Format – JPEG</li><li>Size -Minimum 10 KB to Maximum 1 MB</li><li>The height and width of the Photo must be equal.</li><li>Photo should present Full face, front view, eyes open.</li><li>Center head within frame and present full head from top of hair to bottom of chin.</li><li>Background should be plain light colored or white background.</li><li>No shadows on the face or on the background.</li></ul></li><li>Proof of Address(Any ONE of the following)<ul><li>Utility bill in your name- Water or Electricity bill or driving license or State ID or Lease Agreement. Any one of the Parents ID in case of Minors</li></ul></li></ul>                            </string>
 
 
 </resources>
