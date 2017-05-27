@@ -1,5 +1,6 @@
 package com.android.developer.e_visa;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,21 +12,32 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.developer.e_visa.models.Languages;
+import com.android.developer.e_visa.models.ListDetail;
+import com.android.developer.e_visa.retrofit.ApiClient;
+import com.android.developer.e_visa.retrofit.ApiInterface;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SelectDestination extends AppCompatActivity implements View.OnClickListener {
 
     ImageView air;
     Bitmap bitmap;
-    Spinner spinner,spinner2;
+    Spinner spinner, spinner2;
+    private List<ListDetail> listDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +50,7 @@ public class SelectDestination extends AppCompatActivity implements View.OnClick
         spinner2 = (Spinner) findViewById(R.id.simpleSpinner2);
 
 
-        if(Build.VERSION.SDK_INT>=21){
+        if (Build.VERSION.SDK_INT >= 21) {
 //            spinner.setBackgroundTintList(Resources.c);
         }
         spinner.setOnItemSelectedListener(new ItemSelectedListener());
@@ -48,7 +60,42 @@ public class SelectDestination extends AppCompatActivity implements View.OnClick
         bitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.air);
         air.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap, 25));
 
+        getLanguages();
+
+
     }
+
+
+    private void getLanguages(){
+
+//While the app fetched data we are displaying a progress dialog
+        final ProgressDialog loading = ProgressDialog.show(this,"Fetching Data","Please wait...",false,false);
+
+        ApiInterface apiService =
+                ApiClient.getClient().create(ApiInterface.class);
+
+        apiService.response(new Callback<List<ListDetail>>() {
+
+
+            @Override
+            public void onResponse(Call<List<ListDetail>> call, Response<List<ListDetail>> response) {
+                loading.dismiss();
+
+
+
+                System.out.println("size of language array :"+ response.body().toString());
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ListDetail>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
 
     public class ItemSelectedListener implements AdapterView.OnItemSelectedListener {
 
