@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.android.developer.e_visa.SelectDestination"
-    tools:showIn="@layout/activity_select_destination">
+    tools:context="com.android.developer.e_visa.SelectDestination">
+
+    <include layout="@layout/toolbar_layout"></include>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,7 +17,6 @@
         android:layout_marginBottom="@dimen/layout_margin_top"
         android:layout_marginTop="@dimen/scroll_margin_top"
         android:scrollbars="none">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:background="@color/colorWhite"
                 android:layout_marginTop="@dimen/select_language_margin_top"
                 android:orientation="vertical">
 
@@ -64,25 +66,22 @@
 
 
 
-                <android.support.v7.widget.AppCompatSpinner
+                <Spinner
                     android:id="@+id/simpleSpinner"
                     android:layout_width="@dimen/destination_text_field_width"
                     android:layout_height="@dimen/destination_text_field_height"
                     android:layout_marginTop="@dimen/destination_text_field_margin_top"
-                    android:entries="@array/android_dropdown_arrays"
                     style="@style/spinner_style"
                     android:popupBackground="@color/colorWhite"
                     android:popupElevation="10dp"
                     android:spinnerMode="dropdown"/>
 
 
-
-                <android.support.v7.widget.AppCompatSpinner
+                <Spinner
                     android:id="@+id/simpleSpinner2"
                     android:layout_width="@dimen/destination_text_field_width"
                     android:layout_height="@dimen/destination_text_field_height"
                     android:layout_marginTop="@dimen/destination_text_field_margin_top"
-                    android:entries="@array/android_dropdown_arrays_nationality"
                     style="@style/spinner_style"
                     android:popupBackground="@color/colorWhite"
                     android:popupElevation="10dp"

@@ -41,35 +41,35 @@
 
 
 
-    <string-array name="android_dropdown_arrays">
-        <item>Select a Destination</item>
+    <!--<string-array name="android_dropdown_arrays">-->
+        <!--<item>Select a Destination</item>-->
 
 
-        <item>India</item>
+        <!--<item>India</item>-->
 
-    </string-array>
+    <!--</string-array>-->
 
 
-    <string-array name="android_dropdown_arrays_nationality">
+    <!--<string-array name="android_dropdown_arrays_nationality">-->
 
-        <item>Select a nationality</item>
-        <item>Armenia</item>
-        <item>Australia</item>
-        <item>Bahrain</item>
-        <item>Combodia</item>
-        <item>Canada</item>
-        <item>Dubai</item>
-        <item>Gabon</item>
-        <item>India</item>
-        <item>Kenya</item>
-        <item>Singapur</item>
-        <item>Sri Lanka</item>
-        <item>Taiwan</item>
-        <item>Turkey</item>
-        <item>Uganda</item>
-        <item>USA</item>
+        <!--<item>Select a nationality</item>-->
+        <!--<item>Armenia</item>-->
+        <!--<item>Australia</item>-->
+        <!--<item>Bahrain</item>-->
+        <!--<item>Combodia</item>-->
+        <!--<item>Canada</item>-->
+        <!--<item>Dubai</item>-->
+        <!--<item>Gabon</item>-->
+        <!--<item>India</item>-->
+        <!--<item>Kenya</item>-->
+        <!--<item>Singapur</item>-->
+        <!--<item>Sri Lanka</item>-->
+        <!--<item>Taiwan</item>-->
+        <!--<item>Turkey</item>-->
+        <!--<item>Uganda</item>-->
+        <!--<item>USA</item>-->
 
-    </string-array>
+    <!--</string-array>-->
 
     <string name="guidline_detail">
     \u25CF International Travelers whose sole objective of visiting India is \u0020 \u0020 recreation, sight-seeing, casual \n \u0020 \u0020 visit to meet friends or relatives, short duration medical \u0020 \u0020 treatment or casual business visit.\n\n

@@ -1,6 +1,9 @@
 package com.android.developer.e_visa;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -9,78 +12,371 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class SelectDestination extends AppCompatActivity implements View.OnClickListener {
+import com.android.developer.e_visa.appController.ApplicationController;
+import com.android.developer.e_visa.utils.CustomProgressDialog;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
+import com.android.volley.Request.Method;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
-    ImageView air;
-    Bitmap bitmap;
-    Spinner spinner,spinner2;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static com.android.developer.e_visa.MainActivity.homeFragmentStack;
+
+
+public class SelectDestination extends Fragment implements View.OnClickListener {
+
+    // Tag used to cancel the request
+    private String tag_string_req = "tag_string_req";
+    int MY_SOCKET_TIMEOUT_MS = 50000;
+    private String nationality_url, destination_country_url;
+    private String ID = "id";
+    private ImageView air;
+    private Bitmap bitmap;
+    private Spinner spinner, spinner2;
+    private String selected_id, select_destination, select_nationality;
+    String dest_selectedItem = "";
+    String nat_selectedItem = "";
+    private Context context;
+    ProgressDialog progressDialog;
+
+    StringRequest stringRequest;
+    // array list for destination country
+    private ArrayList<String> dest_country = new ArrayList<>();
+    private ArrayList<String> dest_id_Only = new ArrayList<>();
+    // destination country adapter
+    ArrayAdapter<String> destArrayAdapter;
+
+    // array list for nationality country
+    private ArrayList<String> nat_country = new ArrayList<>();
+   // private ArrayList<String> nat_id_only = new ArrayList<>();
+    // nationality country adapter
+    ArrayAdapter<String> natspinnerArrayAdapter;
+    View view;
+    Bundle bundle;
+    boolean isFirstSelection = true;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
+    private FragmentManager mFragmentManager;
+    private FragmentTransaction mFragmentTransaction;
+    DestinationCountryFragment destinationCountryFragment;
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_destination);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_select_destination, container, false);
 
-        spinner = (Spinner) findViewById(R.id.simpleSpinner);
-        spinner2 = (Spinner) findViewById(R.id.simpleSpinner2);
+        bundle = this.getArguments();
+
+        try {
+            if (bundle != null) {
+
+                select_destination = bundle.getString("select_destination");
+                select_nationality = bundle.getString("select_nationality");
+                ID = bundle.getString("langid");
+
+            }
+
+//            System.out.println("value of dest is :"+select_destination);
 
 
-        if(Build.VERSION.SDK_INT>=21){
-//            spinner.setBackgroundTintList(Resources.c);
+
+        } catch (NullPointerException e) {
+
         }
-        spinner.setOnItemSelectedListener(new ItemSelectedListener());
-        air = (ImageView) findViewById(R.id.submit);
+
+        initView();
+        return view;
+
+    }
+
+
+    private void initView() {
+
+        context = getActivity();
+
+        // there is getActivty() must be required
+        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+
+        progressDialog = new ProgressDialog(context);
+        spinner = (Spinner) view.findViewById(R.id.simpleSpinner);
+        spinner2 = (Spinner) view.findViewById(R.id.simpleSpinner2);
+
+        air = (ImageView) view.findViewById(R.id.submit);
         air.setOnClickListener(this);
 
         bitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.air);
         air.setImageBitmap(ImageConverter.getRoundedCornerBitmap(bitmap, 25));
 
+        getDestinationCountries();
+
     }
 
-    public class ItemSelectedListener implements AdapterView.OnItemSelectedListener {
+    // destination country comes here
 
-        //get strings of first item
-        String firstItem = String.valueOf(spinner.getSelectedItem());
+    private void getDestinationCountries() {
+        destination_country_url = "http://webcreationsx.com/evisa-apis/destinationsapi.php";
+        try {
+            progressDialog.show();
 
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            if (firstItem.equals(String.valueOf(spinner.getSelectedItem()))) {
-                // ToDo when first item is selected
-            } else {
-                Toast.makeText(parent.getContext(),
-                        "You have selected : " + parent.getItemAtPosition(pos).toString(),
-                        Toast.LENGTH_LONG).show();
-                // Todo when item is selected by the user
+            stringRequest = new StringRequest(Method.POST, destination_country_url, new Response.Listener<String>() {
+
+                @Override
+                public void onResponse(String response) {
+
+                    if (progressDialog.isShowing() && progressDialog != null) {
+
+                        progressDialog.dismiss();
+                    }
+                    try {
+
+                        dest_country.add(select_destination);
+
+                        // this anything is added into array list very first element cause it increase size by one and get proper
+                        // selected destination country
+                        dest_id_Only.add("anything");
+
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArray = jsonObject.getJSONArray("arr");
+
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+
+                            JSONObject jObject = jsonArray.getJSONObject(i);
+
+                            dest_country.add(jObject.getString("name"));
+
+                            dest_id_Only.add(jObject.getString("id"));
+
+                        }
+
+
+                        try {
+
+                            destArrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, dest_country);
+
+                            destArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spinner.setAdapter(destArrayAdapter);
+                            destArrayAdapter.notifyDataSetChanged();
+
+                            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                                    // this check is used to avoid the run of onItemSelected() method at time of fragment creation...
+                                    if (isFirstSelection) {
+                                        isFirstSelection = false;
+                                    } else {
+                                        dest_selectedItem = (String) parent.getItemAtPosition(position);
+
+                                        selected_id = dest_id_Only.get(position);
+
+                                        // To save destination country name
+                                        editor.putString("destination_country_name",dest_selectedItem);
+
+                                        // To save the language id into session
+                                        editor.putString("countryid",selected_id);
+                                        editor.commit();
+
+                                        /**
+                                         * Method to get the nationality country according to the destination selection
+                                         */
+                                        getNationalityCountries();
+
+                                    }
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+
+                                }
+                            });
+
+                        } catch (Exception e) {
+
+                        }
+
+                    } catch (JSONException e) {
+
+                    }
+
+                }
+
             }
+                    , new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if (progressDialog.isShowing() && progressDialog != null) {
+
+                        progressDialog.dismiss();
+                    }
+
+                }
+            })
+
+
+            {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("langid", ID);
+
+                    return params;
+                }
+
+            };
+
+        } catch (Exception e) {
         }
 
-        @Override
-        public void onNothingSelected(AdapterView<?> arg) {
+        // to postponed the api hitting and getting response time retry policy is used
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy
+                (MY_SOCKET_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
+//        requestQueue.add(stringRequest);
+        ApplicationController.getInstance().addToRequestQueue(stringRequest, tag_string_req);
+
+
+    }
+
+    private void getNationalityCountries() {
+
+        try {
+
+            nationality_url = "http://webcreationsx.com/evisa-apis/countriesapi.php";
+            stringRequest = new StringRequest(Method.POST, nationality_url, new Response.Listener<String>() {
+
+
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+                        nat_country.add(select_nationality);
+                       // nat_id_only.add("anything");
+
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArray = jsonObject.getJSONArray("arr");
+
+
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+
+                            JSONObject jObject = jsonArray.getJSONObject(i);
+
+                            nat_country.add(jObject.getString("name"));
+
+                           // nat_id_only.add(jObject.getString("id"));
+                        }
+
+                            natspinnerArrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, nat_country);
+                            natspinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spinner2.setAdapter(natspinnerArrayAdapter);
+                            natspinnerArrayAdapter.notifyDataSetChanged();
+
+                            spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                                    if (isFirstSelection) {
+                                        isFirstSelection = false;
+                                    } else {
+
+                                        nat_selectedItem = (String) parent.getItemAtPosition(position);
+                                    }
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+
+                                }
+                            });
+
+
+                    } catch (Exception e) {
+
+                    }
+
+                }
+
+            }
+                    , new Response.ErrorListener() {
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    System.out.println("volley error is :" + error.toString());
+
+                }
+            })
+
+
+            {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    params.put("langid", ID);
+                    params.put("id", selected_id);
+
+                    return params;
+                }
+
+            };
+
+        } catch (Exception e) {
         }
 
+//        requestQueue.add(stringRequest);
+        ApplicationController.getInstance().addToRequestQueue(stringRequest, tag_string_req);
     }
 
 
     @Override
     public void onClick(View v) {
 
-        Intent i = new Intent(SelectDestination.this, DestinationCountryActivity.class);
-        startActivity(i);
-    }
+        destinationCountryFragment = new DestinationCountryFragment();
+        mFragmentManager = getFragmentManager();
+        mFragmentTransaction =  mFragmentManager.beginTransaction();
+        homeFragmentStack.add(destinationCountryFragment);
+        mFragmentTransaction.replace(R.id.place_holder_layout,destinationCountryFragment);
+        mFragmentTransaction.commit();
 
+
+    }
 
     public static class ImageConverter {
 
@@ -106,6 +402,3 @@ public class SelectDestination extends AppCompatActivity implements View.OnClick
         }
     }
 }
-
-
-

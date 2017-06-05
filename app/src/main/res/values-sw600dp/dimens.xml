@@ -29,10 +29,18 @@
     <dimen name="select_language_text_size">35sp</dimen>
 
 
+    <dimen name="vertical_spacing">25dp</dimen>
+    <dimen name="horizontal_spacing">20dp</dimen>
+    <dimen name="linear_grid_layout_height">350dp</dimen>
+
+
+
+
+
     <!--select your destination page-->
 
     <dimen name="layout_margin_top">15dp</dimen>
-    <dimen name="moving_image_height">300dp</dimen>
+    <dimen name="moving_image_height">250dp</dimen>
     <dimen name="topbar_text_size">16sp</dimen>
 
     <dimen name="select_destination_logo_image_width">260dp</dimen>
@@ -55,7 +63,7 @@
     <!--destination country page-->
 
     <dimen name="country_name_text_size">24sp</dimen>
-    <dimen name="country_name_margin_top">18dp</dimen>
+    <dimen name="country_name_margin_top">12dp</dimen>
     <dimen name="country_select_your_destination_margin_top">15dp</dimen>
     <dimen name="guideline_layout_height">80dp</dimen>
     <dimen name="apply_now_width">250dp</dimen>
@@ -101,5 +109,12 @@
 
     <dimen name="select_destination_text_size_for_dubai">19sp</dimen>
     <dimen name="total_fees_text_left">45dp</dimen>
+
+
+    // desination country form
+    <dimen name="layout_padding_left">40dp</dimen>
+    <dimen name="layout_padding_right">40dp</dimen>
+    <dimen name="destination_country_text_size">30sp</dimen>
+    <dimen name="form_margin_top">50p</dimen>
 
 </resources>
