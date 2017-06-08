@@ -84,7 +84,7 @@
     <dimen name="fees_detail_margin_top">20dp</dimen>
 
     <dimen name="image_icon_height">70dp</dimen>
-    <dimen name="image_icon_width">70dp</dimen>
+    <dimen name="image_icon_width">55dp</dimen>
     <dimen name="image_icon_margin_left">20dp</dimen>
     <dimen name="image_icon_text_size">12dp</dimen>
     <dimen name="icon_text_margin">8dp</dimen>
@@ -92,8 +92,8 @@
     <dimen name="icon_text_height">30dp</dimen>
     <dimen name="icon_text_width">30dp</dimen>
     <dimen name="process_layout_height">120dp</dimen>
-    <dimen name="process_layout_padding_left">9dp</dimen>
-    <dimen name="process_layout_padding_right">9dp</dimen>
+    <dimen name="process_layout_padding_left">5dp</dimen>
+    <dimen name="process_layout_padding_right">5dp</dimen>
     <dimen name="sri_lanka_fee_detail_layout_height">100dp</dimen>
 
     <dimen name="dubai_fees_first_text_left">35dp</dimen>
@@ -105,13 +105,23 @@
     <dimen name="select_destination_text_size_for_dubai">12sp</dimen>
     <dimen name="total_fees_text_left">10dp</dimen>
 
+    <dimen name="guidline_text_margin_top">20dp</dimen>
+
 
     // desination country form
     <dimen name="layout_padding_left">20dp</dimen>
     <dimen name="layout_padding_right">20dp</dimen>
     <dimen name="destination_country_text_size">17sp</dimen>
     <dimen name="form_margin_top">25dp</dimen>
-
+    <dimen name="view_margin_top">15dp</dimen>
+    <dimen name="view_height">0.7sp</dimen>
+    <dimen name="personal_tab_width">170dp</dimen>
+    <dimen name="personal_tab_height">50dp</dimen>
+    <dimen name="personal_text_size">17sp</dimen>
+    <dimen name="form_spinner_width">300dp</dimen>
+    <dimen name="form_spinner_height">35dp</dimen>
+    <dimen name="form_credential_text_size">15sp</dimen>
+    <dimen name="save_and_continue">40dp</dimen>
 
 
 

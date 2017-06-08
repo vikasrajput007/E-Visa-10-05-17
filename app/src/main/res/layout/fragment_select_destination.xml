@@ -55,7 +55,7 @@
 
 
                 <TextView
-
+                    android:id="@+id/title_label"
                     android:layout_width="@dimen/select_destination_text_width"
                     android:layout_height="@dimen/select_destination_text_height"
                     android:gravity="center_horizontal"

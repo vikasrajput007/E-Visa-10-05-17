@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/save_and_continue"
+        android:layout_width="@dimen/personal_tab_width"
+        android:layout_height="@dimen/save_and_continue"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/destination_text_field_margin_top"
+        android:background="@drawable/save_and_continue_bg"
+        android:clickable="true"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save and Continue"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/form_credential_text_size" />
+
+
+    </LinearLayout>
+

@@ -8,8 +8,10 @@
     <color name="language_background">#f9f8f8</color>
     <color name="rounded_corner_stroke">#5ec8f2</color>
     <color name="background_color">#000000</color>
-    <color name="center_color">#0d47a1</color>
-    <color name="normal_bg_color">#0d47a1</color>
+    <color name="center_color">#37669a</color>
+    <color name="normal_bg_color">#37669a</color>
     <color name="layout_bg_color">#9e9e9e</color>
+    <color name="form_layout_background">#f5f3f3</color>
+    <color name="save_continue_bg_color">#37669a</color>
 
 </resources>

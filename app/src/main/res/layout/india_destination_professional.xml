@@ -54,12 +54,13 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Personal"
+                        android:text="Professional"
                         android:textAllCaps="true"
                         android:textColor="#333"
                         android:textSize="@dimen/personal_text_size" />
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -69,84 +70,108 @@
                     android:paddingLeft="7dp">
 
                     <Spinner
-                        android:id="@+id/city_of_arrival"
+                        android:id="@+id/present_occupation"
                         style="@style/form_spinner_style">
 
                     </Spinner>
 
                     <EditText
-                        android:id="@+id/email_id"
+                        android:id="@+id/employer_name"
                         style="@style/form_textfield_style"
-                        android:hint="Email" />
+                        android:hint="Employer name" />
+
+                    <EditText
+                        android:id="@+id/employer_address"
+                        style="@style/form_textfield_style"
+                        android:hint="Employer Address" />
+
+
+                    <Spinner
+                        android:id="@+id/millitry_police_security"
+                        style="@style/form_spinner_style">
+
+                    </Spinner>
+
+                    <EditText
+                        android:id="@+id/organistion"
+                        style="@style/form_textfield_style"
+                        android:hint="Organization" />
 
 
                     <EditText
-                        android:id="@+id/retype_email_id"
+                        android:id="@+id/rank"
                         style="@style/form_textfield_style"
-                        android:hint="Re-enter Email" />
+                        android:hint="Rank" />
 
                     <EditText
-                        android:id="@+id/arrival_date"
+                        android:id="@+id/plcae_of_posting"
                         style="@style/form_textfield_style"
-                        android:hint="Expected date of arrival " />
+                        android:hint="Place Of Posting" />
 
                     <Spinner
-                        android:id="@+id/reiligion"
+                        android:id="@+id/visited_india_before"
                         style="@style/form_spinner_style">
 
                     </Spinner>
 
+                    <EditText
+                        android:id="@+id/stayed_address"
+                        style="@style/form_textfield_style"
+                        android:hint="Address Where You Stayed" />
+
 
                     <Spinner
-                        android:id="@+id/qualificaton"
-                        style="@style/form_spinner_style"></Spinner>
-
-
-                    <Spinner
-                        android:id="@+id/aquiredNationality"
+                        android:id="@+id/visa_type"
                         style="@style/form_spinner_style">
 
                     </Spinner>
 
+                    <EditText
+                        android:id="@+id/visa_no"
+                        style="@style/form_textfield_style"
+                        android:hint="Visa No." />
+
+                    <EditText
+                        android:id="@+id/place_of_issue"
+                        style="@style/form_textfield_style"
+                        android:hint="Place of issue" />
+
+                    <EditText
+                        android:id="@+id/date_of_issue"
+                        style="@style/form_textfield_style"
+                        android:hint="Date of issue" />
+
                     <Spinner
-                        android:id="@+id/by_naturalization"
+                        android:id="@+id/before_visited"
                         style="@style/form_spinner_style">
 
                     </Spinner>
 
-                    <Spinner
-                        android:id="@+id/proof_of_address"
-                        style="@style/form_spinner_style">
+                    <EditText
+                        android:id="@+id/years_visited"
+                        style="@style/form_textfield_style"
+                        android:hint="Year/Years in which visited" />
 
-                    </Spinner>
+                    <EditText
+                        android:id="@+id/how_many_time"
+                        style="@style/form_textfield_style"
+                        android:hint="How Many Times" />
 
-                    <LinearLayout
-                        android:id="@+id/save_and_continue"
-                        android:layout_width="@dimen/personal_tab_width"
-                        android:layout_height="@dimen/save_and_continue"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/destination_text_field_margin_top"
-                        android:background="@drawable/save_and_continue_bg"
-                        android:clickable="true"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Save and Continue"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/form_credential_text_size" />
+                    <EditText
+                        android:id="@+id/need_to_call"
+                        style="@style/form_textfield_style"
+                        android:hint="Incase we need to call you for details" />
 
 
-                    </LinearLayout>
+
+                  <include layout="@layout/save_and_continue_layout"></include>
+
 
                 </LinearLayout>
-
 
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
 </LinearLayout>

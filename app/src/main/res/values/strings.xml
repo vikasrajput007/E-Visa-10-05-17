@@ -35,39 +35,37 @@
     <string name="text_bullet7">\u25CF  Credit/debit card or Paypal account. </string>
 
 
-
     <!--iconography-->
-<string name="send_to">&#xf1d9;</string>
-
+    <string name="send_to">&#xf1d9;</string>
 
 
     <!--<string-array name="android_dropdown_arrays">-->
-        <!--<item>Select a Destination</item>-->
+    <!--<item>Select a Destination</item>-->
 
 
-        <!--<item>India</item>-->
+    <!--<item>India</item>-->
 
     <!--</string-array>-->
 
 
     <!--<string-array name="android_dropdown_arrays_nationality">-->
 
-        <!--<item>Select a nationality</item>-->
-        <!--<item>Armenia</item>-->
-        <!--<item>Australia</item>-->
-        <!--<item>Bahrain</item>-->
-        <!--<item>Combodia</item>-->
-        <!--<item>Canada</item>-->
-        <!--<item>Dubai</item>-->
-        <!--<item>Gabon</item>-->
-        <!--<item>India</item>-->
-        <!--<item>Kenya</item>-->
-        <!--<item>Singapur</item>-->
-        <!--<item>Sri Lanka</item>-->
-        <!--<item>Taiwan</item>-->
-        <!--<item>Turkey</item>-->
-        <!--<item>Uganda</item>-->
-        <!--<item>USA</item>-->
+    <!--<item>Select a nationality</item>-->
+    <!--<item>Armenia</item>-->
+    <!--<item>Australia</item>-->
+    <!--<item>Bahrain</item>-->
+    <!--<item>Combodia</item>-->
+    <!--<item>Canada</item>-->
+    <!--<item>Dubai</item>-->
+    <!--<item>Gabon</item>-->
+    <!--<item>India</item>-->
+    <!--<item>Kenya</item>-->
+    <!--<item>Singapur</item>-->
+    <!--<item>Sri Lanka</item>-->
+    <!--<item>Taiwan</item>-->
+    <!--<item>Turkey</item>-->
+    <!--<item>Uganda</item>-->
+    <!--<item>USA</item>-->
 
     <!--</string-array>-->
 
@@ -95,10 +93,12 @@
     </string>
 
 
-
     <string name="guideline_detail2">
                 <ul><li> \u25CF International Travelers whose sole objective of visiting India is recreation, sight-seeing, casual visit to meet friends or relatives, short duration medical treatment or casual business visit.</li><li>\u25CF Passport should have at least six months validity from the date of arrival in India. The passport should have at least two blank pages for stamping by the Immigration Officer.</li><li>You should have lived at your current address for atleast 2 years.</li><li>International Travelers should have return ticket or onward journey ticket, with sufficient money to spend during his/her stay in India.</li><li>International Travelers having Pakistani Passport or Pakistani origin HAVE TO apply for regular Visa at Indian Mission in your respective jurisdiction/Country.</li><li>Not available to Diplomatic/Official Passport Holders.</li><li>Not available to individuals endorsed on Parent’s/Spouse’s Passport i.e. each individual should have a separate passport.</li><li>Not available to International Travel Document holders.</li></ul>
                 <ul><li>Scanned First Page of Passport, in PDF Format. Size of the PDF File should be in the range of Minimum 10KB to Max 300 KB</li><li>The digital photograph to be uploaded along with the Visa application should meet the following requirements:<ul><li>Format – JPEG</li><li>Size -Minimum 10 KB to Maximum 1 MB</li><li>The height and width of the Photo must be equal.</li><li>Photo should present Full face, front view, eyes open.</li><li>Center head within frame and present full head from top of hair to bottom of chin.</li><li>Background should be plain light colored or white background.</li><li>No shadows on the face or on the background.</li></ul></li><li>Proof of Address(Any ONE of the following)<ul><li>Utility bill in your name- Water or Electricity bill or driving license or State ID or Lease Agreement. Any one of the Parents ID in case of Minors</li></ul></li></ul>                            </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

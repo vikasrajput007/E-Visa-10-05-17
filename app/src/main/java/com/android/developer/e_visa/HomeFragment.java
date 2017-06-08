@@ -32,11 +32,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.Inflater;
 
 import static com.android.developer.e_visa.MainActivity.homeFragmentStack;
@@ -47,8 +52,9 @@ import static com.android.developer.e_visa.MainActivity.listDetails;
  */
 
 public class HomeFragment extends Fragment {
-
+    private String tag_string_req = "tag_string_req";
     private String tag_json_obj = "tag_json_obj";
+    String getAllLabelUrl = "";
     private TextView select_language;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
@@ -68,6 +74,7 @@ public class HomeFragment extends Fragment {
     Bundle args;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -78,10 +85,10 @@ public class HomeFragment extends Fragment {
 
 
     private void initView(){
-        context = getActivity();
+         context = getActivity().getApplicationContext();;
 
         // there is getActivty() must be required
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        sharedPref = context.getSharedPreferences("myPrefs",Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
 
@@ -89,9 +96,12 @@ public class HomeFragment extends Fragment {
 
         progressDialog = new ProgressDialog(context);
         args = new Bundle();
+
         select_language = (TextView) view.findViewById(R.id.select_language);
         select_language.setSelected(true);
         gridView = (GridView)view.findViewById(R.id.gv_language);
+
+
 
         adapterMethod();
 
@@ -109,12 +119,15 @@ public class HomeFragment extends Fragment {
                 listDetail = (ListDetail) gridView.getAdapter().getItem(position);
                 ID = listDetail.getId();
 
+
+                getDestinationDetail();
+
+                System.out.println(" is  getDestinationDetail()  started:");
                 // to save the language id into session
                 editor.putString("langid",ID);
                 editor.commit();
 
 
-                getDestinationDetail();
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -146,23 +159,36 @@ public class HomeFragment extends Fragment {
         try {
 
             url_labels = "http://webcreationsx.com/evisa/Api/labels/" + ID;
+            System.out.println("starting id is  :"+ID);
+//            progressDialog.show();
 
-            progressDialog.show();
             JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, url_labels, null, new Response.Listener<JSONObject>() {
 
                 @Override
                 public void onResponse(JSONObject response) {
 
-
-                    if (progressDialog.isShowing() && progressDialog != null) {
-                        progressDialog.dismiss();
-                    }
+                    System.out.println("total json response is :"+response);
+//                    if (progressDialog.isShowing() && progressDialog != null) {
+//                        progressDialog.dismiss();
+//                    }
 
                     try {
 
-
                         select_destination = response.getString("emptyDestinationOption");
                         select_nationality = response.getString("emptyNationalityOption");
+
+                        System.out.println("arrival cites :"+"11111");
+
+
+
+                        JSONArray arrivalCities = (JSONArray)response.getJSONArray("ArrivalCities");
+
+                        System.out.println("arrival cites :"+"aaaa");
+
+                        System.out.println("arrival cites :"+arrivalCities.length());
+
+                        System.out.println("arrival cites :"+"bbbb");
+
 
 
                     } catch (Exception e) {
@@ -175,9 +201,9 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
-                    if (progressDialog.isShowing() && progressDialog != null) {
-                        progressDialog.dismiss();
-                    }
+//                    if (progressDialog.isShowing() && progressDialog != null) {
+//                        progressDialog.dismiss();
+//                    }
 
                 }
             })
@@ -210,6 +236,5 @@ public class HomeFragment extends Fragment {
 
 
     }
-
 
 }
