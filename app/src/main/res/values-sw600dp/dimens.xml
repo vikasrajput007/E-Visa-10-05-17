@@ -111,6 +111,9 @@
     <dimen name="total_fees_text_left">45dp</dimen>
 
     <dimen name="guidline_text_margin_top">30dp</dimen>
+    <dimen name="label_padding_top">16dp</dimen>
+    <dimen name="guidline_text_left_padding">25dp</dimen>
+    <dimen name="guidline_text_right_padding">25dp</dimen>
 
 
     // desination country form

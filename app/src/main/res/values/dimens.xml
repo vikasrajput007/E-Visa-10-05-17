@@ -85,7 +85,7 @@
 
     <dimen name="image_icon_height">70dp</dimen>
     <dimen name="image_icon_width">55dp</dimen>
-    <dimen name="image_icon_margin_left">20dp</dimen>
+    <dimen name="image_icon_margin_left">30dp</dimen>
     <dimen name="image_icon_text_size">12dp</dimen>
     <dimen name="icon_text_margin">8dp</dimen>
 
@@ -106,6 +106,9 @@
     <dimen name="total_fees_text_left">10dp</dimen>
 
     <dimen name="guidline_text_margin_top">20dp</dimen>
+    <dimen name="label_padding_top">12dp</dimen>
+    <dimen name="guidline_text_left_padding">15dp</dimen>
+    <dimen name="guidline_text_right_padding">15dp</dimen>
 
 
     // desination country form

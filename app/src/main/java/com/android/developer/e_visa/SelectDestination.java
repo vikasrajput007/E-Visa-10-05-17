@@ -57,6 +57,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.android.developer.e_visa.MainActivity.all_country_list;
 import static com.android.developer.e_visa.MainActivity.homeFragmentStack;
 
 
@@ -136,6 +137,9 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
+        editor.putString("langid",ID);
+        editor.commit();
+
         progressDialog = new ProgressDialog(context);
         spinner = (Spinner) view.findViewById(R.id.simpleSpinner);
         spinner2 = (Spinner) view.findViewById(R.id.simpleSpinner2);
@@ -196,6 +200,7 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
                             dest_id_Only.add(jObject.getString("id"));
 
                         }
+
 
 
                         try {
@@ -328,6 +333,7 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
                             // nat_id_only.add(jObject.getString("id"));
                         }
 
+                        all_country_list = new ArrayList<>(nat_country);
                         natspinnerArrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, nat_country);
                         natspinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner2.setAdapter(natspinnerArrayAdapter);
@@ -402,8 +408,6 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
                 @Override
                 public void onResponse(String response) {
 
-                    System.out.println("the label response is :" + response);
-
 
                     try {
 
@@ -414,8 +418,6 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
                         System.out.println("value of label array is :"+jsonArray.toString());
 
 //
-
-
                         // to save the language id into session
                         editor.putString("guidline_object",jsonArray.getJSONObject(4).getString("Guidlines label"));
                         editor.putString("fee_object",jsonArray.getJSONObject(5).getString("Fee details label"));

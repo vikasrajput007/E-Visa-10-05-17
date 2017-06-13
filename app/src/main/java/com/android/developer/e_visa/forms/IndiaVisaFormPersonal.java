@@ -3,7 +3,6 @@ package com.android.developer.e_visa.forms;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,7 +27,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static com.android.developer.e_visa.MainActivity.all_country_list;
+import static com.android.developer.e_visa.MainActivity.aquirred_nationality;
 import static com.android.developer.e_visa.MainActivity.homeFragmentStack;
+import static com.android.developer.e_visa.MainActivity.qualification;
+import static com.android.developer.e_visa.MainActivity.religion_list;
 
 
 public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListener {
@@ -46,9 +49,17 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
     private FragmentTransaction mFragmentTransaction;
     IndiaVisaFormFamily indiaVisaFormFamily;
     ArrayAdapter<String> arrivalCityAdapter;
+    ArrayAdapter<String> reiligionAdapter;
+    ArrayAdapter<String> qualificatonAdapter;
+    ArrayAdapter<String> aquiredNationalityAdapter;
+    ArrayAdapter<String> by_naturalizationAdapter;
+    ArrayAdapter<String> proof_of_addressAdapter;
+
+
     private Context context;
-    String arrivalItem;
+    String arrivalItem = "", religion = "", edu_qualification = "", aqu_nationality = "", by_nature = "", address_proof = "";
     boolean isFirstSelection = true;
+    boolean is_nature = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,6 +87,7 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
             by_naturalization = (Spinner) view.findViewById(R.id.by_naturalization);
             proof_of_address = (Spinner) view.findViewById(R.id.proof_of_address);
 
+            by_naturalization.setEnabled(false);
 
             email_id = (EditText) view.findViewById(R.id.email_id);
             retype_email_id = (EditText) view.findViewById(R.id.retype_email_id);
@@ -86,11 +98,12 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
 //        arrival_date.requestFocus();
 
 
-            save_and_continue = (LinearLayout) view.findViewById(R.id.save_and_continue);
+            save_and_continue = (LinearLayout) view.findViewById(R.id.personal_save_and_continue);
             save_and_continue.setOnClickListener(this);
             arrival_date.setOnClickListener(this);
 
 
+            // arrival adpater
             arrivalCityAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, MainActivity.arrival_cities);
             arrivalCityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             city_of_arrival.setAdapter(arrivalCityAdapter);
@@ -104,6 +117,8 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                         isFirstSelection = false;
                     } else {
                         arrivalItem = (String) parent.getItemAtPosition(position);
+
+
                         // To save destination country name
 
                         // save to session
@@ -119,11 +134,174 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                 }
             });
 
+
+            // religion adpater
+            religion_list.add("Religion");
+            reiligionAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, religion_list);
+            reiligionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            reiligion.setAdapter(reiligionAdapter);
+            reiligionAdapter.notifyDataSetChanged();
+            reiligion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    // this check is used to avoid the run of onItemSelected() method at time of fragment creation...
+                    if (isFirstSelection) {
+                        isFirstSelection = false;
+                    } else {
+                        religion = (String) parent.getItemAtPosition(position);
+                        // To save destination country name
+
+                        // save to session
+                        editor.putString("religion", religion);
+                        editor.commit();
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            // qualification adpater
+            qualificatonAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, qualification);
+            qualificatonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            qualificaton.setAdapter(qualificatonAdapter);
+            qualificatonAdapter.notifyDataSetChanged();
+            qualificaton.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    // this check is used to avoid the run of onItemSelected() method at time of fragment creation...
+                    if (isFirstSelection) {
+                        isFirstSelection = false;
+                    } else {
+                        edu_qualification = (String) parent.getItemAtPosition(position);
+                        // To save destination country name
+
+                        // save to session
+                        editor.putString("qualificaton", edu_qualification);
+                        editor.commit();
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            // Accquired Nationality adpater
+            aquiredNationalityAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, aquirred_nationality);
+            aquiredNationalityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            aquiredNationality.setAdapter(aquiredNationalityAdapter);
+            aquiredNationalityAdapter.notifyDataSetChanged();
+            aquiredNationality.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    // this check is used to avoid the run of onItemSelected() method at time of fragment creation...
+                    if (isFirstSelection) {
+                        isFirstSelection = false;
+                    } else {
+                        aqu_nationality = (String) parent.getItemAtPosition(position);
+                        // To save destination country name
+
+                        // save to session
+                        editor.putString("aquiredNationality", aqu_nationality);
+                        editor.commit();
+
+                        // to enable disable the naturalization
+
+                        if (aqu_nationality.equals("Naturalization")) {
+                            by_naturalization.setEnabled(true);
+                            is_nature = true;
+                        } else {
+                            by_naturalization.setEnabled(false);
+
+                        }
+                        isFirstSelection = false;
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+
+            // By naturalisation adpater
+            all_country_list.set(0, "please choose your previous nationality");
+            by_naturalizationAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, all_country_list);
+            by_naturalizationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            by_naturalization.setAdapter(by_naturalizationAdapter);
+            by_naturalizationAdapter.notifyDataSetChanged();
+            by_naturalization.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    // this check is used to avoid the run of onItemSelected() method at time of fragment creation...
+                    if (isFirstSelection) {
+                        isFirstSelection = false;
+                    } else {
+                        by_nature = (String) parent.getItemAtPosition(position);
+                        // To save destination country name
+
+                        // save to session
+                        editor.putString("previous nationality", by_nature);
+                        editor.commit();
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+            // By naturalisation adpater
+            proof_of_addressAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, MainActivity.proof_of_address);
+            proof_of_addressAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            proof_of_address.setAdapter(proof_of_addressAdapter);
+            proof_of_addressAdapter.notifyDataSetChanged();
+            proof_of_address.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    // this check is used to avoid the run of onItemSelected() method at time of fragment creation...
+                    if (isFirstSelection) {
+                        isFirstSelection = false;
+                    } else {
+                        address_proof = (String) parent.getItemAtPosition(position);
+                        // To save destination country name
+
+                        // save to session
+                        editor.putString("proof_of_address", address_proof);
+                        editor.commit();
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
         } catch (Exception e) {
+
 
         }
 
+
     }
+
 
     @Override
     public void onClick(View v) {
@@ -133,49 +311,78 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
 
                 datePickerDialog();
                 break;
-            case R.id.save_and_continue:
+            case R.id.personal_save_and_continue:
 
-                try {
-                    if (email_id.getText().toString().isEmpty()) {
-                        email_id.setError("Please enter email id");
-
-                    } else if (!(FormValidation.isValidEmail(email_id.getText().toString().trim()) &&
-                            FormValidation.isValidEmail(retype_email_id.getText().toString().trim()))) {
-
-                        email_id.setError("Please enter correct id");
-                        retype_email_id.setError("Please enter correct id");
-
-                    }
-
-//                    else if (arrivalItem.equals("City of arrival in India")) {
-//                        Toast.makeText(getActivity(), "Please Select Arrival City", Toast.LENGTH_SHORT).show();
+//                if (arrivalItem.equals("City of arrival in India") || arrivalItem.equals("")) {
+//
+//                    System.out.println("arrival city is checked or not :" + arrivalItem);
+//                    Toast.makeText(context, "Please Select Your Arrival City", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                if (email_id.getText().toString().isEmpty()) {
+//                    email_id.setError("Please enter email id");
+//
+//                } else if (!(FormValidation.isValidEmail(email_id.getText().toString().trim()) &&
+//                        FormValidation.isValidEmail(retype_email_id.getText().toString().trim()))) {
+//
+//                    email_id.setError("Please enter correct id");
+//                    retype_email_id.setError("Please enter correct id");
+//
+//                } else if (!(email_id.getText().toString().trim().equals(retype_email_id.getText().toString().trim()))) {
+//
+//                    email_id.setError("Please type same email id");
+//                }
+////
+//                else if (religion.equals("Religion") || religion.equals("")) {
+//                    System.out.println("Religion is checked or not :" + religion);
+//
+//                    Toast.makeText(context, "Please Select Your Religion", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                else if (arrival_date.getText().toString().trim().equals("")) {
+//                    Toast.makeText(context, "Please Choose Arrival Date", Toast.LENGTH_SHORT).show();
+//                } else if (edu_qualification.equals("Educational Qualification") || edu_qualification.equals("")) {
+//                    System.out.println("Religion is checked or not :" + edu_qualification);
+//                    Toast.makeText(context, "Please Select Your Qualification", Toast.LENGTH_SHORT).show();
+//                } else if (aqu_nationality.equals("How you accquired your current nationality") || aqu_nationality.equals("")) {
+//                    System.out.println("Religion is checked or not :" + aqu_nationality);
+//                    Toast.makeText(context, "Please Select Your Nationalization", Toast.LENGTH_SHORT).show();
+//                } else if (by_nature.equals("Please Choose Your Previous Nationality")) {
+//                    if (is_nature) {
+//                        System.out.println("Religion is checked or not :" + by_nature);
+//                        Toast.makeText(context, "Please Choose Your Previous Nationality", Toast.LENGTH_SHORT).show();
 //                    }
-                    else if (!(email_id.getText().toString().trim().equals(retype_email_id.getText().toString().trim()))) {
+//                } else if (address_proof.equals("Proof of Address in your Name(Any One)")) {
+//                    System.out.println("Religion is checked or not :" + address_proof);
+//                    Toast.makeText(context, "Please Choose Address Proof", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                else {
 
-                        email_id.setError("Please type same email id");
-                    }
+                    // save to session
+                    editor.putString("email_id", email_id.getText().toString().trim());
+                    editor.putString("arrival_date", arrival_date.getText().toString().trim());
 
-                    else {
+                    editor.commit();
 
-                        indiaVisaFormFamily = new IndiaVisaFormFamily();
-                        mFragmentManager = getFragmentManager();
-                        mFragmentTransaction = mFragmentManager.beginTransaction();
-                        homeFragmentStack.add(indiaVisaFormFamily);
-                        mFragmentTransaction.replace(R.id.place_holder_layout, indiaVisaFormFamily);
-                        mFragmentTransaction.commit();
 
-                    }
+                    indiaVisaFormFamily = new IndiaVisaFormFamily();
+                    mFragmentManager = getFragmentManager();
+                    mFragmentTransaction = mFragmentManager.beginTransaction();
+                    homeFragmentStack.add(indiaVisaFormFamily);
+                    mFragmentTransaction.replace(R.id.place_holder_layout, indiaVisaFormFamily);
+                    mFragmentTransaction.commit();
 
-                } catch (NullPointerException e) {
+//                }
 
-                }
+
                 break;
         }
 
     }
 
     public void datePickerDialog() {
-        dateFormatter = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
+        dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
 
         datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
 

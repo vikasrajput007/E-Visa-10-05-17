@@ -38,7 +38,7 @@ import static com.android.developer.e_visa.MainActivity.homeFragmentStack;
 public class DestinationCountryFragment extends Fragment {
     private String tag_string_req = "tag_string_req";
     int MY_SOCKET_TIMEOUT_MS = 50000;
-    RelativeLayout button;
+    LinearLayout button;
     ImageView apply_now, destination_country_flag, country_banner_image;
     TextView guidline_text, country_name_textview, country_fee, global_service_fee, total,description,guideline_label,fee_detail_label,
             govt_fee_label,service_fee_label,total_label,fill_visa_label,visa_by_mail_label,go_to_label,apply_now_label,
@@ -80,6 +80,9 @@ public class DestinationCountryFragment extends Fragment {
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         ID = sharedPref.getString("langid", "");
         country_id = sharedPref.getString("countryid", "");
+
+        System.out.println("value of lang id is:"+ID);
+        System.out.println("value of country id is:"+country_id);
 
         countryDetailArrayList = new ArrayList<>();
 
@@ -134,7 +137,7 @@ public class DestinationCountryFragment extends Fragment {
         country_name_textview.setText(sharedPref.getString("destination_country_name", ""));
 
 
-        button = (RelativeLayout) view.findViewById(R.id.apply_now);
+        button = (LinearLayout) view.findViewById(R.id.apply_now);
 
 
        // guidline_text.setText(R.string.guidline_detail);

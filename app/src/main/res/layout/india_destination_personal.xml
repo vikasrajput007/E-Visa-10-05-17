@@ -76,12 +76,14 @@
 
                     <EditText
                         android:id="@+id/email_id"
+                        android:singleLine="true"
                         style="@style/form_textfield_style"
                         android:hint="Email" />
 
 
                     <EditText
                         android:id="@+id/retype_email_id"
+                        android:singleLine="true"
                         style="@style/form_textfield_style"
                         android:hint="Re-enter Email" />
 
@@ -121,7 +123,7 @@
                     </Spinner>
 
                     <LinearLayout
-                        android:id="@+id/save_and_continue"
+                        android:id="@+id/personal_save_and_continue"
                         android:layout_width="@dimen/personal_tab_width"
                         android:layout_height="@dimen/save_and_continue"
                         android:layout_gravity="center"

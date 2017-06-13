@@ -157,6 +157,90 @@
                         style="@style/form_textfield_style"
                         android:hint="How Many Times" />
 
+                    <LinearLayout
+                        android:id="@+id/add_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/save_and_continue"
+                        android:layout_gravity="left"
+                        android:padding="6dp"
+                        android:visibility="gone"
+                        android:layout_marginTop="@dimen/destination_text_field_margin_top"
+                        android:background="@drawable/save_and_continue_bg"
+                        android:clickable="true"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add More"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/form_credential_text_size" />
+
+
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/before_visited_more"
+                        android:visibility="gone"
+                        style="@style/form_spinner_style">
+
+                    </Spinner>
+
+                    <EditText
+                        android:id="@+id/years_visited_more"
+                        style="@style/form_textfield_style"
+                        android:visibility="gone"
+                        android:hint="Year/Years in which visited" />
+
+                    <EditText
+                        android:id="@+id/how_many_time_more"
+                        style="@style/form_textfield_style"
+                        android:visibility="gone"
+                        android:hint="How Many Times" />
+
+
+                    <LinearLayout
+                        android:id="@+id/add_more2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/save_and_continue"
+                        android:layout_gravity="left"
+                        android:padding="6dp"
+                        android:visibility="gone"
+                        android:layout_marginTop="@dimen/destination_text_field_margin_top"
+                        android:background="@drawable/save_and_continue_bg"
+                        android:clickable="true"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add More"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/form_credential_text_size" />
+
+
+                    </LinearLayout>
+
+
+                    <Spinner
+                        android:id="@+id/before_visited_more2"
+                        android:visibility="gone"
+                        style="@style/form_spinner_style">
+
+                    </Spinner>
+
+                    <EditText
+                        android:id="@+id/years_visited_more2"
+                        style="@style/form_textfield_style"
+                        android:visibility="gone"
+                        android:hint="Year/Years in which visited" />
+
+                    <EditText
+                        android:id="@+id/how_many_time_more2"
+                        style="@style/form_textfield_style"
+                        android:visibility="gone"
+                        android:hint="How Many Times" />
+
                     <EditText
                         android:id="@+id/need_to_call"
                         style="@style/form_textfield_style"
@@ -164,7 +248,25 @@
 
 
 
-                  <include layout="@layout/save_and_continue_layout"></include>
+                    <LinearLayout
+                        android:id="@+id/professional_save_and_continue"
+                        android:layout_width="@dimen/personal_tab_width"
+                        android:layout_height="@dimen/save_and_continue"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/destination_text_field_margin_top"
+                        android:background="@drawable/save_and_continue_bg"
+                        android:clickable="true"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save and Continue"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/form_credential_text_size" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout>

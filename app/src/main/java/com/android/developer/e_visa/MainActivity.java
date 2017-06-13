@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,26 +61,39 @@ public class MainActivity extends AppCompatActivity {
     private ListDetail listDetail;
     private String select_destination, select_nationality;
 
-    public static ArrayList<ListDetail> listDetails = new ArrayList<>();
+    public static ArrayList<ListDetail>  listDetails = new ArrayList<>();
     Context context;
     ProgressDialog progressDialog;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
     HomeFragment homeFragment;
 
-    public static ArrayList<String> arrival_cities = new ArrayList<>();
-    public static ArrayList<String> religion = new ArrayList<>();
-    public static ArrayList<String> qualification = new ArrayList<>();
-    public static ArrayList<String> aquirred_nationality = new ArrayList<>();
-    public static ArrayList<String> by_naturalisation = new ArrayList<>();
-    public static ArrayList<String> proof_of_address = new ArrayList<>();
-    public static ArrayList<String> marriage_status_list = new ArrayList<>();
-    public static ArrayList<String> present_occupation = new ArrayList<>();
-    public static ArrayList<String> millitary_police_security_org = new ArrayList<>();
-    public static ArrayList<String> visited_before = new ArrayList<>();
-    public static ArrayList<String> visa_type = new ArrayList<>();
-    public static ArrayList<String> past_countries_visited = new ArrayList<>();
-    public static ArrayList<String> fathers_nationality = new ArrayList<>();
+    public static ArrayList<String> all_country_list,insurancedays_list,yesno_list,arrival_cities,religion_list,purpose_list,kenya_road_menu_list,
+
+            account_type_list,qualification,aquirred_nationality,application_status_list,telephone_type_list,gender_type,dubai_visa_type_list,
+
+            dubai_airport_type_list,dubai_document_type_list,how_long_list,spouse_nationality_list,kenya_arrival_menu_list,kenya_air_menu_list,
+
+            iiss_list,proof_of_address,travel_document_type_list,days_stays_us_list,where_stays_us_list,us_going_list,
+
+            marriage_status_list,present_occupation_list,millitary_police_security_org,visited_before,visa_type_list,residence_status_list,
+
+            past_countries_visited,add_more_list,add_more_list2,fathers_nationality,fathers_birth_country,mothers_nationality,mothers_birth_country,us_visa_purpose_list,
+
+            her_nationality,her_birth_country,kenya_ship_menu_list,kenya_apply_list,srilanka_title_list,srilanka_purpose_list,title_list,
+
+            iam_list,funds_list,contact_language_list,eta_type_list,passport_type_list,turky_duration_list,turky_entry_list,gcc_list,port_list,
+
+            behrain_detail_purpose_list,armenia_stay_period_list,evisa_type_list,single_visa_type_list,multiple_visa_type_list,uganda_visa_category,
+
+            immigration_status_list,point_of_entry_list,stay_period_request_list,myanmaar_port_entry_list,myanmaar_accomodation_list,
+
+            myanmaar_visa_type_list,kuwait_passport_list,kuwait_gcc_country_list,kuwait_education_list,building_type_list,career_of_deseas,
+
+            azerbaijan_purpose_list,tajikistan_purpose_list,tajikistan_tuorism_list,tajikistan_private,tajikistan_passport_type,tajikistan_bussiness_list;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         context = this;
         progressDialog = new ProgressDialog(context);
 
+        getLanguagesName();
+
+
         initView();
 
     }
@@ -96,25 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
 
-        // add first item to all spinner adpater array list
-
         try {
-
-            arrival_cities.add("City of arrival in India");
-            religion.add("Reiligion");
-            qualification.add("Educational Qualification");
-            aquirred_nationality.add("How you accquired your current nationality");
-            by_naturalisation.add("If by Naturalization");
-            proof_of_address.add("Proof of Address in your Name(Any One)");
-            marriage_status_list.add("Your Marriage Status");
-            present_occupation.add("Present Occupation");
-            millitary_police_security_org.add("If in Military/Police/Security Organisation");
-            visited_before.add("Have you ever visited India Before");
-            visa_type.add("Visa Type");
-            past_countries_visited.add("Have you visited any of these country in the past");
-            fathers_nationality.add("Father's Nationality");
-            // to get all languages and opens the home fragment into activity
-            getLanguagesName();
 
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -123,11 +122,157 @@ public class MainActivity extends AppCompatActivity {
             mFragmentTransaction.replace(R.id.place_holder_layout, homeFragment, "homeFragment");
             mFragmentTransaction.commit();
 
+
+            populateTable();
+
         } catch (Exception e) {
 
         }
     }
 
+
+    private void populateTable() {
+        runOnUiThread(new Runnable(){
+            public void run() {
+
+                try{
+
+                    all_country_list = new ArrayList<>();
+                    insurancedays_list = new ArrayList<>();
+                    yesno_list = new ArrayList<>();
+                    arrival_cities   = new ArrayList<>();
+                    religion_list = new ArrayList<>();
+                    purpose_list = new ArrayList<>();
+                    account_type_list = new ArrayList<>();
+                    qualification = new ArrayList<>();
+                    aquirred_nationality = new ArrayList<>();
+                    application_status_list = new ArrayList<>();
+                    telephone_type_list = new ArrayList<>();
+                    gender_type = new ArrayList<>();
+                    iiss_list = new ArrayList<>();
+                    travel_document_type_list = new ArrayList<>();
+                    days_stays_us_list = new ArrayList<>();
+                    where_stays_us_list = new ArrayList<>();
+                    us_going_list = new ArrayList<>();
+                    residence_status_list = new ArrayList<>();
+                    us_visa_purpose_list = new ArrayList<>();
+                    dubai_visa_type_list = new ArrayList<>();
+                    dubai_airport_type_list = new ArrayList<>();
+                    dubai_document_type_list = new ArrayList<>();
+                    how_long_list = new ArrayList<>();
+                    spouse_nationality_list = new ArrayList<>();
+                    kenya_arrival_menu_list = new ArrayList<>();
+                    kenya_air_menu_list = new ArrayList<>();
+                    kenya_road_menu_list = new ArrayList<>();
+                    kenya_ship_menu_list = new ArrayList<>();
+                    kenya_apply_list = new ArrayList<>();
+                    srilanka_title_list = new ArrayList<>();
+                    srilanka_purpose_list = new ArrayList<>();
+                    title_list = new ArrayList<>();
+                    iam_list = new ArrayList<>();
+                    funds_list = new ArrayList<>();
+                    contact_language_list = new ArrayList<>();
+                    eta_type_list = new ArrayList<>();
+                    passport_type_list = new ArrayList<>();
+                    turky_duration_list = new ArrayList<>();
+                    turky_entry_list = new ArrayList<>();
+                    gcc_list = new ArrayList<>();
+                    port_list = new ArrayList<>();
+                    behrain_detail_purpose_list = new ArrayList<>();
+                    armenia_stay_period_list = new ArrayList<>();
+                    proof_of_address = new ArrayList<>();
+                    marriage_status_list = new ArrayList<>();
+                    present_occupation_list = new ArrayList<>();
+                    millitary_police_security_org = new ArrayList<>();
+                    visited_before = new ArrayList<>();
+                    visa_type_list = new ArrayList<>();
+                    past_countries_visited = new ArrayList<>();
+                    add_more_list = new ArrayList<>();
+                    add_more_list2 = new ArrayList<>();
+                    fathers_nationality = new ArrayList<>();
+                    fathers_birth_country = new ArrayList<>();
+                    mothers_nationality = new ArrayList<>();
+                    mothers_birth_country = new ArrayList<>();
+                    her_nationality = new ArrayList<>();
+                    her_birth_country = new ArrayList<>();
+
+                    evisa_type_list = new ArrayList<>();
+                    single_visa_type_list = new ArrayList<>();
+                    multiple_visa_type_list = new ArrayList<>();
+                    uganda_visa_category = new ArrayList<>();
+                    immigration_status_list = new ArrayList<>();
+                    point_of_entry_list = new ArrayList<>();
+                    stay_period_request_list = new ArrayList<>();
+                    myanmaar_port_entry_list = new ArrayList<>();
+                    myanmaar_accomodation_list = new ArrayList<>();
+                    myanmaar_visa_type_list = new ArrayList<>();
+                    kuwait_passport_list = new ArrayList<>();
+                    kuwait_gcc_country_list = new ArrayList<>();
+                    kuwait_education_list = new ArrayList<>();
+                    building_type_list = new ArrayList<>();
+                    career_of_deseas = new ArrayList<>();
+                    azerbaijan_purpose_list = new ArrayList<>();
+                    tajikistan_bussiness_list = new ArrayList<>();
+                    tajikistan_tuorism_list = new ArrayList<>();
+                    tajikistan_private = new ArrayList<>();
+                    tajikistan_passport_type = new ArrayList<>();
+
+
+                    // add first item to all spinner adpater array list
+
+                    insurancedays_list.add("Insurance Days");
+                    arrival_cities.add("City of arrival in India");
+                    religion_list.clear();
+                    religion_list.add("Religion");
+                    qualification.clear();
+                    qualification.add("Educational Qualification");
+                    aquirred_nationality.clear();
+                    aquirred_nationality.add("How you accquired your current nationality");
+
+                    //by_naturalisation.add("please choose your previous nationality");
+                    proof_of_address.clear();
+                    proof_of_address.add("Proof of Address in your Name");
+
+                    marriage_status_list.clear();
+                    marriage_status_list.add("Your Marriage Status");
+
+                    present_occupation_list.clear();
+                    present_occupation_list.add("Present Occupation");
+
+                    millitary_police_security_org.clear();
+                    millitary_police_security_org.add("If in Military/Police/Security Organisation");
+
+                    visited_before.clear();
+                    visited_before.add("Have you ever visited India Before");
+
+                    visa_type_list.clear();
+                    visa_type_list.add("Visa Type");
+
+                    past_countries_visited.clear();
+                    past_countries_visited.add("Have you visited any of these country in the past");
+//
+//                    add_more_list.clear();
+//                    add_more_list.add("Add More Visisted Country");
+//
+//                    add_more_list2.clear();
+//                    add_more_list2.add("Add More Visisted Country");
+
+                    account_type_list.add("Account Type");
+
+                    fathers_nationality.add("Father's Nationality");
+                    fathers_birth_country.add("Father's Birth Country");
+                    mothers_nationality.add("Mother's Nationality");
+                    mothers_birth_country.add("Mother's Birth Country");
+                    her_nationality.add("His/Her Nationality");
+                    her_birth_country.add("His/Her Country of Birth");
+
+
+                }catch (Exception e){
+
+                }
+            }
+        });
+    }
 
     private void getLanguagesName() {
 
@@ -142,7 +287,6 @@ public class MainActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
 
-                    System.out.println("the first response  :" + response);
                     try {
                         for (int i = 0; i < response.length(); i++) {
 
@@ -190,28 +334,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onBackPressed() {

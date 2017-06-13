@@ -117,6 +117,7 @@
                         android:id="@+id/guideline_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/label_padding_top"
                         android:layout_marginLeft="@dimen/icon_text_margin"
                         android:text="Guideline"
                         android:textColor="@color/colorWhite"
@@ -131,8 +132,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/guidline_text_margin_top"
                     android:gravity="center"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp">
+                    android:paddingLeft="@dimen/guidline_text_left_padding"
+                    android:paddingRight="@dimen/guidline_text_right_padding">
 
 
                     <TextView
@@ -165,6 +166,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/icon_text_margin"
+                        android:paddingTop="@dimen/label_padding_top"
                         android:text="Fees Details"
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/country_detail_text_size"
@@ -313,16 +315,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/process_layout_height"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/process_layout_padding_left"
-                    android:paddingRight="@dimen/process_layout_padding_right">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <LinearLayout
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
+                        android:layout_marginLeft="@dimen/image_icon_margin_left"
                         android:orientation="vertical">
 
                         <ImageView
@@ -386,7 +387,6 @@
                             android:layout_width="@dimen/image_icon_width"
                             android:layout_height="@dimen/image_icon_height"
                             android:layout_marginTop="@dimen/country_name_margin_top"
-                            android:elevation="7dp"
                             android:onClick="applyForVisa"
                             android:src="@drawable/goto1" />
 
@@ -402,7 +402,7 @@
 
                 </LinearLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/apply_now"
                     android:layout_width="@dimen/apply_now_width"
                     android:layout_height="@dimen/apply_now_height"
@@ -410,6 +410,7 @@
                     android:layout_marginTop="@dimen/country_name_margin_top"
                     android:background="@drawable/now_apply_selector"
                     android:clickable="true"
+                    android:orientation="horizontal"
                     android:gravity="center">
 
                     <ImageView
@@ -422,16 +423,14 @@
                         android:id="@+id/apply_now_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/label_padding_top"
                         android:layout_marginLeft="@dimen/apply_now_text_margin_left"
-                        android:layout_marginTop="@dimen/apply_now_text_margin_top"
-                        android:layout_toRightOf="@+id/arrow"
-                        android:foregroundGravity="center_vertical"
                         android:text="Apply Now"
                         android:textColor="@drawable/icon_color_hover_bg"
                         android:textSize="@dimen/apply_now_text_size" />
 
 
-                </RelativeLayout>
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -452,6 +451,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/icon_text_margin"
+                        android:paddingTop="@dimen/label_padding_top"
                         android:text="Requirments For Applying Visa"
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/country_detail_text_size"
@@ -476,21 +476,21 @@
                         android:layout_height="@dimen/requirement_image_height_width"
                         android:src="@drawable/contract" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/requirement_text_margin_left"
-                        android:orientation="vertical">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!---->
+                        <!--android:orientation="vertical">-->
 
                         <TextView
                             android:id="@+id/requirments_for_apply"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/text_bullet"
+                            android:layout_marginLeft="@dimen/requirement_text_margin_left"
                             android:textColor="@color/background_color"
                             android:textSize="@dimen/requirement_text_size" />
 
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
 
                     <!--<LinearLayout-->
                     <!--android:layout_width="wrap_content"-->
