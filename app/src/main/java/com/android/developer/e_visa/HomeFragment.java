@@ -272,7 +272,7 @@ public class HomeFragment extends Fragment {
                 editor.putString("langid", ID);
                 editor.commit();
 
-
+// kjsdkjf
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
