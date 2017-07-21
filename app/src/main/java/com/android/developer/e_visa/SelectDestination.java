@@ -181,7 +181,8 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
 
                         // this anything is added into array list very first element cause it increase size by one and get proper
                         // selected destination country in the same sequence
-                        dest_id_Only.add("anything");
+                        dest_id_Only.add(0,"anything");
+//                        dest_id_Only.add(1,"onething");
 
                         JSONObject jsonObject = new JSONObject(response);
 
@@ -202,7 +203,6 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
                         }
 
 
-
                         try {
 
                             destArrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, dest_country);
@@ -221,10 +221,14 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
                                     } else {
                                         dest_selectedItem = (String) parent.getItemAtPosition(position);
 
+
                                         selected_id = dest_id_Only.get(position);
 
+//                                        System.out.println("value of detination is :"+dest_selectedItem);
+//                                        System.out.println("id of selected destination is :"+selected_id);
                                         // To save destination country name
                                         editor.putString("destination_country_name", dest_selectedItem);
+                                        editor.putString("destination_country_name_id",String.valueOf(position));
 
                                         // To save the language id into session
                                         editor.putString("countryid", selected_id);
@@ -333,7 +337,10 @@ public class SelectDestination extends Fragment implements View.OnClickListener 
                             // nat_id_only.add(jObject.getString("id"));
                         }
 
-                        all_country_list = new ArrayList<>(nat_country);
+                        // to transfer one array list into another array list
+                       // all_country_list = new ArrayList<>(nat_country);
+
+
                         natspinnerArrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, nat_country);
                         natspinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner2.setAdapter(natspinnerArrayAdapter);

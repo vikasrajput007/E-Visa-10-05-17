@@ -38,6 +38,7 @@ import java.util.Map;
 
 import static com.android.developer.e_visa.MainActivity.add_more_list;
 import static com.android.developer.e_visa.MainActivity.add_more_list2;
+import static com.android.developer.e_visa.MainActivity.homeFragmentStack;
 import static com.android.developer.e_visa.MainActivity.millitary_police_security_org;
 import static com.android.developer.e_visa.MainActivity.past_countries_visited;
 import static com.android.developer.e_visa.MainActivity.present_occupation_list;
@@ -60,6 +61,7 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
     SharedPreferences.Editor editor;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
+    UploadDocumentFragment uploadDocumentFragment;
     private View view;
     ProgressDialog progressDialog;
     private Context context;
@@ -85,14 +87,17 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
 
     private void initView() {
 
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        ID = sharedPref.getString("langid", "");
-        destination = sharedPref.getString("destination_country_name", "");
-
         context = getActivity();
-        progressDialog = new ProgressDialog(context);
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
+
+
+        ID = sharedPref.getString("langid", "");
+        destination = sharedPref.getString("destination_country_name", "");
+        uploadDocumentFragment = new UploadDocumentFragment();
+
+        progressDialog = new ProgressDialog(context);
+
         newDate = Calendar.getInstance();
 
         // spinners
@@ -183,7 +188,7 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
                         // To save destination country name
 
                         // save to session
-                        editor.putString("occupation", occupation);
+                        editor.putString("occupation", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -213,9 +218,9 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
                         mill_pol_security = (String) parent.getItemAtPosition(position);
                         // To save destination country name
 
-                        // save to session
-//                        editor.putString("mill_pol_security", mill_pol_security);
-//                        editor.commit();
+                        //   save to session
+                        editor.putString("mill_pol_security", String.valueOf(position));
+                        editor.commit();
 
                         if (!mill_pol_security.equals("If in Military/Police/Security Organisation")) {
 
@@ -265,7 +270,7 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
                         // To save destination country name
 
                         // save to session
-                        editor.putString("visited_india", visited_india);
+                        editor.putString("visited_india", String.valueOf(position));
                         editor.commit();
 
                         if (!visited_india.equals("Have you ever visited India Before")) {
@@ -318,7 +323,7 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
                         // To save destination country name
 
                         // save to session
-                        editor.putString("type_visa", type_visa);
+                        editor.putString("type_visa", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -330,9 +335,6 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
                 }
             });
 
-//            her_birth_country = (ArrayList<String>) all_country_list.clone();
-//            her_birth_country.set(0, "His/Her Birth Country");
-            // no. of times before visit adapter
 
             past_visitedAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, past_countries_visited);
             past_visitedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -350,19 +352,19 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
                         // To save destination country name
 
                         // save to session
-                        editor.putString("past_visit", past_visit);
+                        editor.putString("past_visit", String.valueOf(position));
                         editor.commit();
 
-                        if (!past_visit.equals("Have you visited any of these country in the past")) {
+                        if (!past_visit.equals("Have you visited these country")) {
 
                             if (!past_visit.equals("No")) {
-//                                years_visited.setEnabled(true);
-//                                how_many_time.setEnabled(true);
-                                add_more.setVisibility(View.VISIBLE);
+                                years_visited.setEnabled(true);
+                                how_many_time.setEnabled(true);
+                                //  add_more.setVisibility(View.VISIBLE);
 
 
                             }
-                        } else if (!past_visit.equals("Have you visited any of these country in the past") || !past_visit.equals("No")) {
+                        } else {
 
 
                             years_visited.setEnabled(false);
@@ -381,68 +383,11 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
 
 
                         }
-                        isFirstSelection = false;
 
                     }
 
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-
-//
-            //adapter for more visited country and cloning the array list also
-
-            // add_more_list = (ArrayList<String>) past_countries_visited.clone();
-//            add_more_list.remove(0);
-            //  add_more_list.set(0, "Select More Country");
-            isFirstSelection = true;
-            past_visitedAdapterMore = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, past_countries_visited);
-            past_visitedAdapterMore.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            past_visited_more.setAdapter(past_visitedAdapterMore);
-            past_visitedAdapterMore.notifyDataSetChanged();
-            past_visited.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                    // this check is used to avoid the run of onItemSelected() method at time of fragment creation...
-                    if (isFirstSelection) {
-                        isFirstSelection = false;
-                    } else {
-                        past_visit_more = (String) parent.getItemAtPosition(position);
-                        // To save destination country name
-
-                        // save to session
-                        editor.putString("past_visit_more", past_visit_more);
-                        editor.commit();
-
-                        if (!past_visit_more.equals("Have you visited any of these country in the past")) {
-                            if (!past_visit_more.equals("No")) {
-
-//                                years_visited_more.setEnabled(true);
-//                                how_many_time_more.setEnabled(true);
-                                editor.putString("past_visit_more", past_visit_more);
-                                editor.commit();
-                                add_more2.setVisibility(View.VISIBLE);
-
-                            }
-                        } else {
-
-//                            years_visited_more.setEnabled(false);
-//                            how_many_time_more.setEnabled(false);
-
-                            add_more2.setVisibility(View.GONE);
-
-                            past_visited_more2.setVisibility(View.GONE);
-                            years_visited_more2.setVisibility(View.GONE);
-                            how_many_time_more2.setVisibility(View.GONE);
-                        }
-
-                    }
                     isFirstSelection = false;
+
                 }
 
                 @Override
@@ -450,58 +395,7 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
 
                 }
             });
-//
-//            //  adapter for more visited country and cloning the array list
-//
-//            add_more_list2 = (ArrayList<String>) past_countries_visited.clone();
-//            add_more_list2.set(0, "Select More Country");
-//            past_visitedAdapterMore2 = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, add_more_list2);
-//            past_visitedAdapterMore2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//            past_visited_more2.setAdapter(past_visitedAdapterMore2);
-//            past_visitedAdapterMore2.notifyDataSetChanged();
-//            past_visited_more2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                @Override
-//                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//
-//                    // this check is used to avoid the run of onItemSelected() method at time of fragment creation...
-//                    if (isFirstSelection) {
-//                        isFirstSelection = false;
-//                    } else {
-//                        past_visit_more2 = (String) parent.getItemAtPosition(position);
-//                        // To save destination country name
-//
-//                        // save to session
-//                        editor.putString("past_visit_more2", past_visit_more2);
-//                        editor.commit();
-//
-//                        if (!past_visit_more2.equals("More Country")) {
-//
-//                            years_visited_more2.setEnabled(true);
-//                            how_many_time_more2.setEnabled(true);
-//                            editor.putString("past_visit_more2", past_visit_more2);
-//                            editor.commit();
-//
-//
-//                        }
-//
-//                        if (past_visit_more2.equals("More Country")) {
-//                            years_visited.setEnabled(false);
-//                            how_many_time.setEnabled(false);
-//
-////                            past_visited_more2.setVisibility(View.GONE);
-////                            years_visited_more2.setVisibility(View.GONE);
-////                            how_many_time_more2.setVisibility(View.GONE);
-//                        }
-//
-//                    }
-//                    isFirstSelection = false;
-//                }
-//
-//                @Override
-//                public void onNothingSelected(AdapterView<?> parent) {
-//
-//                }
-//            });
+
 
         } catch (Exception e) {
 
@@ -516,22 +410,12 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
                 datePickerDialog();
                 break;
 
-            case R.id.add_more:
-                past_visited_more.setVisibility(View.VISIBLE);
-                years_visited_more.setVisibility(View.VISIBLE);
-                how_many_time_more.setVisibility(View.VISIBLE);
-                break;
-
-//            case R.id.add_more2:
-//                past_visited_more2.setVisibility(View.VISIBLE);
-//                years_visited_more2.setVisibility(View.VISIBLE);
-//                how_many_time_more2.setVisibility(View.VISIBLE);
-//                break;
 
             case R.id.professional_save_and_continue:
 
+                System.out.println("is save and continue running in this position ? ? ? ");
                 try {
-                    if (occupation.equals("Present Occupation") || occupation.equals("")) {
+                    if (occupation.equals("Present Occupation")) {
 
                         Toast.makeText(context, "Please Select Your Present Occupation", Toast.LENGTH_SHORT).show();
                     } else if (employer_name.getText().toString().equals("")) {
@@ -541,188 +425,489 @@ public class IndiaVisaFormProfessional extends Fragment implements View.OnClickL
                     } else if (mill_pol_security.equals("If in Military/Police/Security Organisation")) {
                         Toast.makeText(context, "Please Select Military/Police/Security Organisation", Toast.LENGTH_SHORT).show();
 
-                    } else if (mill_pol_security.equals("Yes")) {
-
-                        if (plcae_of_posting.getText().toString().equals("")) {
-                            Toast.makeText(context, "Please Type Place of Posting", Toast.LENGTH_SHORT).show();
-                        } else if (rank.getText().toString().equals("")) {
-                            Toast.makeText(context, "Please Type Rank", Toast.LENGTH_SHORT).show();
-                        } else if (organistion.getText().toString().equals("")) {
-                            Toast.makeText(context, "Please Type Organisation Name", Toast.LENGTH_SHORT).show();
-                        }
+                    } else if (mill_pol_security.equals("Yes") && !plcae_of_posting.getText().toString().equals("")
+                            && !rank.getText().toString().equals("") && !organistion.getText().toString().equals("")) {
 
 
+//                        Toast.makeText(context,"Please Fill next detail",Toast.LENGTH_SHORT).show();
 
-                        else {
+                        if (visited_india.equals("Have you ever visited India Before")) {
+
+                            Toast.makeText(context, "Please Select your previous visits option", Toast.LENGTH_SHORT).show();
+                        } else if (visited_india.equals("Yes")) {
+
+                            if (stayed_address.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Stayed Address", Toast.LENGTH_SHORT).show();
+                            } else if (type_visa.equals("Visa Type") || type_visa.equals("")) {
+                                Toast.makeText(context, "Please Select Your Visa Type", Toast.LENGTH_SHORT).show();
+                            } else if (visa_no.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Your Visa Number", Toast.LENGTH_SHORT).show();
+                            } else if (place_of_issue.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Place of Issue", Toast.LENGTH_SHORT).show();
+                            } else if (date_of_issue.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Date of Issue", Toast.LENGTH_SHORT).show();
+                            } else {
 
 
-                                editor.putString("employer_name", employer_name.getText().toString());
-                                editor.putString("employer_address", employer_address.getText().toString());
+                                if (!past_visit.equals("No") && !years_visited.getText().toString().equals("") &&
+                                        !how_many_time.getText().toString().equals("")) {
 
 
-                                editor.putString("mill_pol_security", mill_pol_security);
-                                editor.putString("organistion", organistion.getText().toString());
-                                editor.putString("rank", rank.getText().toString());
-                                editor.putString("plcae_of_posting", plcae_of_posting.getText().toString());
+                                    if (need_to_call.getText().toString().equals("")) {
+
+                                        Toast.makeText(context, "Please Type Your Day Time Contact Number", Toast.LENGTH_SHORT).show();
+
+                                    } else {
+
+                                        Toast.makeText(context, "Data saved", Toast.LENGTH_SHORT).show();
+
+                                        System.out.println("Data saved successfully 000. . .");
+
+                                        System.out.println("what is employer name :" + employer_name.getText().toString());
+                                        System.out.println("what is employer address :" + employer_name.getText().toString());
+
+                                        editor.putString("employer_name", employer_name.getText().toString());
+                                        editor.putString("employer_address", employer_address.getText().toString());
+
+                                        // editor.putString("mill_pol_security", mill_pol_security);
+                                        editor.putString("organistion", organistion.getText().toString());
+                                        editor.putString("rank", rank.getText().toString());
+                                        editor.putString("plcae_of_posting", plcae_of_posting.getText().toString());
+
 //                            }
 //                        }
 
 //                        if(!visited_india.equals("Have you ever visited India Before")){
-                                editor.putString("visited_india", visited_india);
-                                editor.putString("stayed_address", stayed_address.getText().toString());
-                                editor.putString("type_visa", type_visa);
-                                editor.putString("visa_no", visa_no.getText().toString());
-                                editor.putString("place_of_issue", place_of_issue.getText().toString());
-                                editor.putString("date_of_issue", date_of_issue.getText().toString());
+                                        // editor.putString("visited_india", visited_india);
+                                        editor.putString("stayed_address", stayed_address.getText().toString());
+                                        // editor.putString("type_visa", type_visa);
+                                        editor.putString("visa_no", visa_no.getText().toString());
+                                        editor.putString("place_of_issue", place_of_issue.getText().toString());
+                                        editor.putString("date_of_issue", date_of_issue.getText().toString());
 
 //                        }
 //
 //                        if(!past_visit.equals("Have you ever visited India Before")){
-                                editor.putString("past_visited", past_visit);
-                                editor.putString("years_visited", years_visited.getText().toString());
-                                editor.putString("how_many_time", how_many_time.getText().toString());
+                                        // editor.putString("past_visited", past_visit);
+                                        editor.putString("years_visited", years_visited.getText().toString());
+                                        editor.putString("how_many_time", how_many_time.getText().toString());
 
 //                        }
 
-                                editor.putString("need_to_call", need_to_call.getText().toString());
+                                        editor.putString("need_to_call", need_to_call.getText().toString());
 
-                                // method to save and post the customer data to server
+                                        editor.commit();
 
-                                System.out.println("is post customer detail running ?");
+                                        System.out.println("what is employer name in session :" + sharedPref.getString("employer_name", ""));
+                                        // method to save and post the customer data to server
 
-                                postCustomerDetail();
+                                        System.out.println("is post customer need to call ?" + sharedPref.getString("need_to_call", ""));
+                                        System.out.println("is post customer visited_india ?" + sharedPref.getString("visited_india", ""));
+                                        System.out.println("is post customer occupation ?" + sharedPref.getString("occupation", ""));
+                                        System.out.println("is post customer stayed_address ?" + sharedPref.getString("stayed_address", ""));
+                                        System.out.println("is post customer visa_no ?" + sharedPref.getString("visa_no", ""));
+                                        System.out.println("is post customer organistion ?" + sharedPref.getString("organistion", ""));
+                                        System.out.println("is post customer mill_pol_security ?" + sharedPref.getString("mill_pol_security", ""));
+                                        System.out.println("is post customer plcae_of_posting ?" + sharedPref.getString("plcae_of_posting", ""));
 
-                                System.out.println("is post customer detail running ?" + 2);
 
+                                        System.out.println("is post customer detail running ?" + 2);
+
+                                        //  Go to the page Proceed to payment
+
+                                        mFragmentManager = getFragmentManager();
+                                        mFragmentTransaction = mFragmentManager.beginTransaction();
+                                        homeFragmentStack.add(uploadDocumentFragment);
+                                        mFragmentTransaction.replace(R.id.place_holder_layout, uploadDocumentFragment);
+                                        mFragmentTransaction.commit();
+
+                                    }
+
+                                } else if (past_visit.equals("Have you visited these country")) {
+
+                                    Toast.makeText(context, "Please Select Past Country Visit Option", Toast.LENGTH_SHORT).show();
+
+                                } else if (!past_visit.equals("No")) {
+                                    Toast.makeText(context, "Please Type Visited Year", Toast.LENGTH_SHORT).show();
+
+                                    if (years_visited.getText().toString().equals("")) {
+                                        Toast.makeText(context, "Please Type Visited Year", Toast.LENGTH_SHORT).show();
+                                    }
+                                    if (how_many_time.getText().toString().equals("")) {
+                                        Toast.makeText(context, "Please Type Number of Visits", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else if (!past_visit.equals("No") && !years_visited.getText().toString().equals("") &&
+                                        !how_many_time.getText().toString().equals("")) {
+
+
+                                    if (need_to_call.getText().toString().equals("")) {
+
+                                        Toast.makeText(context, "Please Type Your Day Time Contact Number", Toast.LENGTH_SHORT).show();
+
+                                    } else {
+
+                                        Toast.makeText(context, "Data saved", Toast.LENGTH_SHORT).show();
+
+                                        System.out.println("Data saved successfully 000. . .");
+
+                                        System.out.println("what is employer name :" + employer_name.getText().toString());
+
+                                        editor.putString("employer_name", employer_name.getText().toString());
+                                        editor.putString("employer_address", employer_address.getText().toString());
+
+                                        // editor.putString("mill_pol_security", mill_pol_security);
+                                        editor.putString("organistion", organistion.getText().toString());
+                                        editor.putString("rank", rank.getText().toString());
+                                        editor.putString("plcae_of_posting", plcae_of_posting.getText().toString());
+
+                                        System.out.println("what is employer name in session :" + sharedPref.getString("employer_name", ""));
+
+                                        editor.putString("stayed_address", stayed_address.getText().toString());
+                                        //  editor.putString("type_visa", type_visa);
+                                        editor.putString("visa_no", visa_no.getText().toString());
+                                        editor.putString("place_of_issue", place_of_issue.getText().toString());
+                                        editor.putString("date_of_issue", date_of_issue.getText().toString());
+
+                                        editor.putString("years_visited", years_visited.getText().toString());
+                                        editor.putString("how_many_time", how_many_time.getText().toString());
+
+                                        editor.putString("need_to_call", need_to_call.getText().toString());
+
+                                        editor.commit();
+                                        // method to save and post the customer data to server
+
+                                        System.out.println("is post customer need to call ?" + sharedPref.getString("need_to_call", ""));
+                                        System.out.println("is post customer visited_india ?" + sharedPref.getString("visited_india", ""));
+                                        System.out.println("is post customer occupation ?" + sharedPref.getString("occupation", ""));
+                                        System.out.println("is post customer stayed_address ?" + sharedPref.getString("stayed_address", ""));
+                                        System.out.println("is post customer visa_no ?" + sharedPref.getString("visa_no", ""));
+                                        System.out.println("is post customer organistion ?" + sharedPref.getString("organistion", ""));
+                                        System.out.println("is post customer mill_pol_security ?" + sharedPref.getString("mill_pol_security", ""));
+                                        System.out.println("is post customer plcae_of_posting ?" + sharedPref.getString("plcae_of_posting", ""));
+
+
+                                        //  Go to the page Proceed to payment
+
+                                        mFragmentManager = getFragmentManager();
+                                        mFragmentTransaction = mFragmentManager.beginTransaction();
+                                        homeFragmentStack.add(uploadDocumentFragment);
+                                        mFragmentTransaction.replace(R.id.place_holder_layout, uploadDocumentFragment);
+                                        mFragmentTransaction.commit();
+
+                                    }
+
+                                } else if (past_visit.equals("Have you visited these country")) {
+
+                                    Toast.makeText(context, "Please Select Past Country Visit Option", Toast.LENGTH_SHORT).show();
+
+                                } else if (!past_visit.equals("No")) {
+                                    Toast.makeText(context, "Please Type Visited Year", Toast.LENGTH_SHORT).show();
+
+                                    if (years_visited.getText().toString().equals("")) {
+                                        Toast.makeText(context, "Please Type Visited Year", Toast.LENGTH_SHORT).show();
+                                    }
+                                    if (how_many_time.getText().toString().equals("")) {
+                                        Toast.makeText(context, "Please Type Number of Visits", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else if (need_to_call.getText().toString().equals("")) {
+
+                                    Toast.makeText(context, "Please Type Your Day Time Contact Number", Toast.LENGTH_SHORT).show();
+
+                                } else {
+
+                                    Toast.makeText(context, "Data saved ", Toast.LENGTH_SHORT).show();
+
+
+                                    System.out.println("Data saved successfully ");
+
+                                    editor.putString("employer_name", employer_name.getText().toString());
+                                    editor.putString("employer_address", employer_address.getText().toString());
+
+                                    // editor.putString("mill_pol_security", mill_pol_security);
+                                    editor.putString("organistion", organistion.getText().toString());
+                                    editor.putString("rank", rank.getText().toString());
+                                    editor.putString("plcae_of_posting", plcae_of_posting.getText().toString());
+//                            }
+//                        }
+
+//                        if(!visited_india.equals("Have you ever visited India Before")){
+                                    //     editor.putString("visited_india", visited_india);
+                                    editor.putString("stayed_address", stayed_address.getText().toString());
+                                    //  editor.putString("type_visa", type_visa);
+                                    editor.putString("visa_no", visa_no.getText().toString());
+                                    editor.putString("place_of_issue", place_of_issue.getText().toString());
+                                    editor.putString("date_of_issue", date_of_issue.getText().toString());
+
+//                        }
+//
+//                        if(!past_visit.equals("Have you ever visited India Before")){
+                                    //   editor.putString("past_visited", past_visit);
+                                    editor.putString("years_visited", years_visited.getText().toString());
+                                    editor.putString("how_many_time", how_many_time.getText().toString());
+                                    editor.putString("need_to_call", need_to_call.getText().toString());
+
+                                    // method to save and post the customer data to server
+
+                                    System.out.println("is post customer need to call ?" + sharedPref.getString("need_to_call", ""));
+                                    System.out.println("is post customer visited_india ?" + sharedPref.getString("visited_india", ""));
+                                    System.out.println("is post customer occupation ?" + sharedPref.getString("occupation", ""));
+                                    System.out.println("is post customer stayed_address ?" + sharedPref.getString("stayed_address", ""));
+                                    System.out.println("is post customer visa_no ?" + sharedPref.getString("visa_no", ""));
+                                    System.out.println("is post customer organistion ?" + sharedPref.getString("organistion", ""));
+                                    System.out.println("is post customer mill_pol_security ?" + sharedPref.getString("mill_pol_security", ""));
+                                    System.out.println("is post customer plcae_of_posting ?" + sharedPref.getString("plcae_of_posting", ""));
+
+
+                                    System.out.println("is post customer detail running ?" + 2);
+
+                                    //  Go to the page Proceed to payment
+
+                                    mFragmentManager = getFragmentManager();
+                                    mFragmentTransaction = mFragmentManager.beginTransaction();
+                                    homeFragmentStack.add(uploadDocumentFragment);
+                                    mFragmentTransaction.replace(R.id.place_holder_layout, uploadDocumentFragment);
+                                    mFragmentTransaction.commit();
+
+                                }
+                            }
+
+                        }
+
+
+                    } else if (visited_india.equals("No")) {
+
+                        if (past_visit.equals("Have you visited these country")) {
+
+                            Toast.makeText(context, "Please Select Past Country Visit Option", Toast.LENGTH_SHORT).show();
+
+                        } else if (!past_visit.equals("No")) {
+                            Toast.makeText(context, "Please Type Visited Year", Toast.LENGTH_SHORT).show();
+
+                            if (years_visited.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Visited Year", Toast.LENGTH_SHORT).show();
+                            }
+                            if (how_many_time.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Number of Visits", Toast.LENGTH_SHORT).show();
+                            }
+                        } else if (need_to_call.getText().toString().equals("")) {
+
+                            Toast.makeText(context, "Please Type Your Day Time Contact Number", Toast.LENGTH_SHORT).show();
+
+                        } else {
+
+                            Toast.makeText(context, "Data saved ", Toast.LENGTH_SHORT).show();
+
+
+                            System.out.println("Data saved successfully first. . .");
+
+                            editor.putString("employer_name", employer_name.getText().toString());
+                            editor.putString("employer_address", employer_address.getText().toString());
+
+                            //  editor.putString("mill_pol_security", mill_pol_security);
+                            editor.putString("organistion", organistion.getText().toString());
+                            editor.putString("rank", rank.getText().toString());
+                            editor.putString("plcae_of_posting", plcae_of_posting.getText().toString());
+
+                            editor.putString("stayed_address", stayed_address.getText().toString());
+//                                editor.putString("type_visa", type_visa);
+                            editor.putString("visa_no", visa_no.getText().toString());
+                            editor.putString("place_of_issue", place_of_issue.getText().toString());
+                            editor.putString("date_of_issue", date_of_issue.getText().toString());
+
+                            editor.putString("years_visited", years_visited.getText().toString());
+                            editor.putString("how_many_time", how_many_time.getText().toString());
+                            editor.putString("need_to_call", need_to_call.getText().toString());
+
+                            // method to save and post the customer data to server
+
+                            System.out.println("is post customer need to call ?" + sharedPref.getString("need_to_call", ""));
+                            System.out.println("is post customer visited_india ?" + sharedPref.getString("visited_india", ""));
+                            System.out.println("is post customer occupation ?" + sharedPref.getString("occupation", ""));
+                            System.out.println("is post customer stayed_address ?" + sharedPref.getString("stayed_address", ""));
+                            System.out.println("is post customer visa_no ?" + sharedPref.getString("visa_no", ""));
+                            System.out.println("is post customer organistion ?" + sharedPref.getString("organistion", ""));
+                            System.out.println("is post customer mill_pol_security ?" + sharedPref.getString("mill_pol_security", ""));
+                            System.out.println("is post customer plcae_of_posting ?" + sharedPref.getString("plcae_of_posting", ""));
+
+
+                            System.out.println("is post customer detail running ?" + 2);
+
+                            //  Go to the page Proceed to payment
+
+                            mFragmentManager = getFragmentManager();
+                            mFragmentTransaction = mFragmentManager.beginTransaction();
+                            homeFragmentStack.add(uploadDocumentFragment);
+                            mFragmentTransaction.replace(R.id.place_holder_layout, uploadDocumentFragment);
+                            mFragmentTransaction.commit();
+
+                        }
+
+
+//                            if (need_to_call.getText().toString().equals("")) {
+//
+//                                Toast.makeText(context, "Please Type Your Day Time Contact Number", Toast.LENGTH_SHORT).show();
+//
+//                              }
+//
+//                            else {
+//
+//                                Toast.makeText(context, "Data saved successfully second . . .", Toast.LENGTH_SHORT).show();
+//
+//                                System.out.println("Data saved successfully second. . .");
+//
+//                                editor.putString("employer_name", employer_name.getText().toString());
+//                                editor.putString("employer_address", employer_address.getText().toString());
+//
+//                                editor.putString("mill_pol_security", mill_pol_security);
+//                                editor.putString("organistion", organistion.getText().toString());
+//                                editor.putString("rank", rank.getText().toString());
+//                                editor.putString("plcae_of_posting", plcae_of_posting.getText().toString());
+//
+//                                editor.putString("visited_india", visited_india);
+//                                editor.putString("stayed_address", stayed_address.getText().toString());
+//                                editor.putString("type_visa", type_visa);
+//                                editor.putString("visa_no", visa_no.getText().toString());
+//                                editor.putString("place_of_issue", place_of_issue.getText().toString());
+//                                editor.putString("date_of_issue", date_of_issue.getText().toString());
+//                                editor.putString("past_visited", past_visit);
+//                                editor.putString("years_visited", years_visited.getText().toString());
+//                                editor.putString("how_many_time", how_many_time.getText().toString());
+//
+//                                editor.putString("need_to_call", need_to_call.getText().toString());
+//
+//                                System.out.println("is post customer need to call ?" + sharedPref.getString("need_to_call", ""));
+//                                System.out.println("is post customer visited_india ?" + sharedPref.getString("visited_india", ""));
+//                                System.out.println("is post customer occupation ?" + sharedPref.getString("occupation", ""));
+//                                System.out.println("is post customer stayed_address ?" + sharedPref.getString("stayed_address", ""));
+//                                System.out.println("is post customer visa_no ?" + sharedPref.getString("visa_no", ""));
+//                                System.out.println("is post customer organistion ?" + sharedPref.getString("organistion", ""));
+//                                System.out.println("is post customer mill_pol_security ?" + sharedPref.getString("mill_pol_security", ""));
+//                                System.out.println("is post customer plcae_of_posting ?" + sharedPref.getString("plcae_of_posting", ""));
+//
+//
+//                                System.out.println("is post customer detail running ?" + 2);
+//
+//                                //  Go to the page Proceed to payment
+//
+//                                mFragmentManager = getFragmentManager();
+//                                mFragmentTransaction = mFragmentManager.beginTransaction();
+//                                homeFragmentStack.add(uploadDocumentFragment);
+//                                mFragmentTransaction.replace(R.id.place_holder_layout, uploadDocumentFragment);
+//                                mFragmentTransaction.commit();
+//
+//                            }
+
+                    } else if (mill_pol_security.equals("Yes")) {
+
+                        if (plcae_of_posting.getText().toString().equals("")) {
+                            Toast.makeText(context, "Please Type Place of Posting", Toast.LENGTH_SHORT).show();
+                        }
+                        if (rank.getText().toString().equals("")) {
+                            Toast.makeText(context, "Please Type Rank", Toast.LENGTH_SHORT).show();
+                        }
+                        if (organistion.getText().toString().equals("")) {
+                            Toast.makeText(context, "Please Type Organisation Name", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+
+                        if (visited_india.equals("Have you ever visited India Before") || visited_india.equals("")) {
+
+                            Toast.makeText(context, "Please Select your previous visits option", Toast.LENGTH_SHORT).show();
+                        } else if (visited_india.equals("Yes")) {
+
+                            if (stayed_address.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Stayed Address", Toast.LENGTH_SHORT).show();
+                            } else if (type_visa.equals("Visa Type") || type_visa.equals("")) {
+                                Toast.makeText(context, "Please Select Your Visa Type", Toast.LENGTH_SHORT).show();
+                            } else if (visa_no.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Your Visa Number", Toast.LENGTH_SHORT).show();
+                            } else if (place_of_issue.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Place of Issue", Toast.LENGTH_SHORT).show();
+                            } else if (date_of_issue.getText().toString().equals("")) {
+                                Toast.makeText(context, "Please Type Date of Issue", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+
+                            if (past_visit.equals("Have you visited these country")) {
+
+                                Toast.makeText(context, "Please Select Past Country Visit Option", Toast.LENGTH_SHORT).show();
+
+                            } else if (!past_visit.equals("No")) {
+
+                                if (years_visited.getText().toString().equals("")) {
+                                    Toast.makeText(context, "Please Type Visited Year", Toast.LENGTH_SHORT).show();
+                                } else if (how_many_time.getText().toString().equals("")) {
+                                    Toast.makeText(context, "Please Type Number of Visits", Toast.LENGTH_SHORT).show();
+                                }
+
+                            } else {
+
+                                if (need_to_call.getText().toString().equals("")) {
+
+                                    Toast.makeText(context, "Please Type Your Day Time Contact Number", Toast.LENGTH_SHORT).show();
+
+                                } else {
+
+                                    Toast.makeText(context, "Data saved ", Toast.LENGTH_SHORT).show();
+
+                                    System.out.println("Data saved successfully last. . .");
+
+                                    editor.putString("employer_name", employer_name.getText().toString());
+                                    editor.putString("employer_address", employer_address.getText().toString());
+
+                                    //  editor.putString("mill_pol_security", mill_pol_security);
+                                    editor.putString("organistion", organistion.getText().toString());
+                                    editor.putString("rank", rank.getText().toString());
+                                    editor.putString("plcae_of_posting", plcae_of_posting.getText().toString());
+
+                                    editor.putString("stayed_address", stayed_address.getText().toString());
+                                    //   editor.putString("type_visa", type_visa);
+                                    editor.putString("visa_no", visa_no.getText().toString());
+                                    editor.putString("place_of_issue", place_of_issue.getText().toString());
+                                    editor.putString("date_of_issue", date_of_issue.getText().toString());
+
+                                    editor.putString("years_visited", years_visited.getText().toString());
+                                    editor.putString("how_many_time", how_many_time.getText().toString());
+
+
+                                    editor.putString("need_to_call", need_to_call.getText().toString());
+
+                                    editor.commit();
+
+                                    System.out.println("is post customer need to call ?" + sharedPref.getString("need_to_call", ""));
+                                    System.out.println("is post customer visited_india ?" + sharedPref.getString("visited_india", ""));
+                                    System.out.println("is post customer occupation ?" + sharedPref.getString("occupation", ""));
+                                    System.out.println("is post customer stayed_address ?" + sharedPref.getString("stayed_address", ""));
+                                    System.out.println("is post customer visa_no ?" + sharedPref.getString("visa_no", ""));
+                                    System.out.println("is post customer organistion ?" + sharedPref.getString("organistion", ""));
+                                    System.out.println("is post customer mill_pol_security ?" + sharedPref.getString("mill_pol_security", ""));
+                                    System.out.println("is post customer plcae_of_posting ?" + sharedPref.getString("plcae_of_posting", ""));
+
+//
+//                                    System.out.println("is post customer detail running ?" + 2);
+
+                                    //  Go to the page Proceed to payment
+
+                                    mFragmentManager = getFragmentManager();
+                                    mFragmentTransaction = mFragmentManager.beginTransaction();
+                                    homeFragmentStack.add(uploadDocumentFragment);
+                                    mFragmentTransaction.replace(R.id.place_holder_layout, uploadDocumentFragment);
+                                    mFragmentTransaction.commit();
+
+                                }
                             }
                         }
 
-                        } catch (Exception e){
+                    }
+                } catch (Exception e) {
 
-                    System.out.println("what is the error of this api "+e.toString());
-                        }
+                    System.out.println("what is the error of this api " + e.toString());
+                }
 
 
                 break;
         }
 
-    }
-
-    private void postCustomerDetail() {
-
-        try {
-
-            progressDialog.show();
-            progressDialog.setMessage("Please Wait . . .");
-            post_data_url = "htttp://webcreationsx.com/evisa-apis/indiaapi.php";
-            stringRequest = new StringRequest(Request.Method.POST, post_data_url, new Response.Listener<String>() {
-
-
-                @Override
-                public void onResponse(String response) {
-
-                    if (progressDialog.isShowing() && progressDialog != null) {
-
-                        progressDialog.dismiss();
-                    }
-                    try {
-
-                        JSONObject jsonObject = new JSONObject(response);
-
-                        System.out.println("response of indian api :" + jsonObject.toString());
-
-
-                    } catch (Exception e) {
-
-                    }
-
-                }
-
-            }
-                    , new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                    if (progressDialog.isShowing() && progressDialog != null) {
-
-                        progressDialog.dismiss();
-                    }
-
-                    System.out.println("response of indian api :" + error.toString());
-
-
-                }
-            })
-
-
-            {
-                @Override
-                protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
-
-                    System.out.println("value of lang id is :" + ID);
-                    params.put("langid", ID);
-                    params.put("destination", destination);
-                    params.put("city_of_arrival", sharedPref.getString("arrival_city", ""));
-//                    params.put("applicantid", ID);  email_id
-                    params.put("date_of_arrival", sharedPref.getString("arrival_date", ""));
-                    params.put("email", sharedPref.getString("email_id", ""));
-                    params.put("religion", sharedPref.getString("religion", ""));
-                    params.put("education", sharedPref.getString("qualificaton", ""));
-                    params.put("accquired_nationality", sharedPref.getString("aquiredNationality", ""));
-                    params.put("previous nationality", sharedPref.getString("previous nationality", ""));
-                    params.put("address_proof", sharedPref.getString("proof_of_address", ""));
-                    params.put("fathers_name", sharedPref.getString("father_name", ""));
-                    params.put("fathers_nationality", sharedPref.getString("father_nationality", ""));
-                    params.put("fathers_place_of_birth", sharedPref.getString("father_birth_place", ""));
-                    params.put("fathers_country_of_birth", sharedPref.getString("father_brth_contry", ""));
-                    params.put("mothers_name", sharedPref.getString("mother_name", ""));
-                    params.put("mothers_nationality", sharedPref.getString("mothr_nationlity", ""));
-                    params.put("mothers_place_of_birth", sharedPref.getString("mother_birth_place", ""));
-                    params.put("mothers_country_of_birth", sharedPref.getString("mthr_brth_contry", ""));
-                    params.put("marriage_status", sharedPref.getString("marriage_status", ""));
-                    params.put("spouse_name", sharedPref.getString("your_spouse_name", ""));
-                    params.put("spouse_nationality", sharedPref.getString("his_her_nationlty", ""));
-                    params.put("spouse_place_of_birth", sharedPref.getString("his_her_birth_place", ""));
-                    params.put("spouse_country_of_birth", sharedPref.getString("his_her_brth_contry", ""));
-                    params.put("occupation", sharedPref.getString("occupation", ""));
-                    params.put("employer_name", sharedPref.getString("employer_name", ""));
-                    params.put("employer_address", sharedPref.getString("employer_address", ""));
-                    params.put("in_military_police_security", sharedPref.getString("mill_pol_security", ""));
-                    params.put("organization", sharedPref.getString("organistion", ""));
-                    params.put("rank", sharedPref.getString("rank", ""));
-                    params.put("place_of_posting", sharedPref.getString("plcae_of_posting", ""));
-                    params.put("ever_visited_india", sharedPref.getString("visited_india", ""));
-                    params.put("address_where_stayed", sharedPref.getString("stayed_address", ""));
-                    params.put("visa_no", sharedPref.getString("visa_no", ""));
-                    params.put("visa_type", sharedPref.getString("type_visa", ""));
-                    params.put("place_of_issue", sharedPref.getString("place_of_issue", ""));
-                    params.put("date_of_issue", sharedPref.getString("date_of_issue", ""));
-                    params.put("is_visited_coutries", sharedPref.getString("past_visited", ""));
-                    params.put("year_of_visited", sharedPref.getString("years_visited", ""));
-                    params.put("no_of_times", sharedPref.getString("how_many_time", ""));
-                    // params.put("morevisitedcountries", ID);
-                   // params.put("day_time_contact_cc", ID);
-                    params.put("day_time_contact", sharedPref.getString("need_to_call", ""));
-//                    params.put("passport_front", ID);
-//                    params.put("photo", ID);
-//                    params.put("proof", ID);
-//                    params.put("application_status", ID);
-//                    params.put("date_created", ID);
-//                    params.put("time_created", ID);
-//                    params.put("is_translated", ID);
-//                    params.put("translator_user ", ID);
-
-                    return params;
-                }
-
-            };
-
-        } catch (Exception e) {
-        }
-
-        ApplicationController.getInstance().addToRequestQueue(stringRequest, tag_string_req);
     }
 
 

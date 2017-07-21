@@ -139,6 +139,7 @@
                     <EditText
                         android:id="@+id/date_of_issue"
                         style="@style/form_textfield_style"
+                        android:inputType="none"
                         android:hint="Date of issue" />
 
                     <Spinner
@@ -244,6 +245,7 @@
                     <EditText
                         android:id="@+id/need_to_call"
                         style="@style/form_textfield_style"
+                        android:inputType="phone"
                         android:hint="Incase we need to call you for details" />
 
 

@@ -43,6 +43,7 @@ public class DestinationCountryFragment extends Fragment {
     TextView guidline_text, country_name_textview, country_fee, global_service_fee, total,description,guideline_label,fee_detail_label,
             govt_fee_label,service_fee_label,total_label,fill_visa_label,visa_by_mail_label,go_to_label,apply_now_label,
             requirments_for_apply_label,requirments_for_apply;
+
     LinearLayout guideline_ll;
 
     View view;
@@ -133,12 +134,9 @@ public class DestinationCountryFragment extends Fragment {
         requirments_for_apply.setText(Html.fromHtml(sharedPref.getString("visa_requirment", "")));
 
 
-
         country_name_textview.setText(sharedPref.getString("destination_country_name", ""));
 
-
         button = (LinearLayout) view.findViewById(R.id.apply_now);
-
 
        // guidline_text.setText(R.string.guidline_detail);
 
@@ -153,13 +151,11 @@ public class DestinationCountryFragment extends Fragment {
                 mFragmentTransaction.replace(R.id.place_holder_layout,visaForm);
                 mFragmentTransaction.commit();
 
-
             }
         });
 
 
         getDestinationCountries();
-
 
     }
 
@@ -174,13 +170,13 @@ public class DestinationCountryFragment extends Fragment {
                 @Override
                 public void onResponse(String response) {
 
-
                     System.out.println("value of array is :" + response);
 
                     if (progressDialog.isShowing() && progressDialog != null) {
 
                         progressDialog.dismiss();
                     }
+
                     try {
 
                         JSONObject jsonObject = new JSONObject(response);
@@ -208,10 +204,10 @@ public class DestinationCountryFragment extends Fragment {
                             flag_image_url = countryDetailArrayList.get(3);
                             flag_string = countryDetailArrayList.get(4);
 
-                        System.out.println("first value is :"+Html.fromHtml(countryDetailArrayList.get(5))+ "\n" + "second value is :"+Html.fromHtml(countryDetailArrayList.get(6)) + "\n" + "third value is :"+Html.fromHtml(countryDetailArrayList.get(7)) );
+                        System.out.println("first value is :"+"0x2022"+Html.fromHtml(countryDetailArrayList.get(5))+ "\n" + "second value is :"+Html.fromHtml(countryDetailArrayList.get(6)) + "\n" + "third value is :"+Html.fromHtml(countryDetailArrayList.get(7)) );
 
-                        guidline_text.setText(Html.fromHtml(countryDetailArrayList.get(5))+""+ "\n"   +"" +Html.fromHtml(countryDetailArrayList.get(6))+ "\n"   +"" +Html.fromHtml(countryDetailArrayList.get(7)));
-                       // description.setText(Html.fromHtml(countryDetailArrayList.get(6)));
+                        guidline_text.setText(Html.fromHtml(countryDetailArrayList.get(5))+""+ "\n"   +"" +Html.fromHtml(countryDetailArrayList.get(6)));
+                        description.setText(Html.fromHtml(countryDetailArrayList.get(7)));
 
 
                         country_fee.setText("$ " + govt);

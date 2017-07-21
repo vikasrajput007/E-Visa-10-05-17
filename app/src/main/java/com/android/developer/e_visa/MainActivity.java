@@ -1,18 +1,32 @@
 package com.android.developer.e_visa;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,8 +36,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.developer.e_visa.adapters.LanguageAdapter;
 import com.android.developer.e_visa.appController.ApplicationController;
+import com.android.developer.e_visa.forms.UploadDocumentFragment;
 import com.android.developer.e_visa.models.ListDetail;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
@@ -40,59 +54,73 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Stack;
 import java.util.concurrent.ExecutionException;
+
+import static android.os.Environment.getExternalStoragePublicDirectory;
 
 public class MainActivity extends AppCompatActivity {
 
     // Stack for back button of all pages
     public static Stack<Fragment> homeFragmentStack = new Stack<>();
+    public static int GALLERY_PICTURE_BILL = 3;
+    public static int CAMERA_REQUEST_BILL = 4;
+    public static Uri photoURI;
+    public static String ImageURI;
+    String picturePath,imagePath;
+    File photofile;
+    public static Bitmap photo_image_bitmap;
+    String timeStamp, imageFileName,_id="";
+    File storageDir, image;
 
     private String tag_string_req = "tag_string_req";
     // Tag used to cancel the request
     private String tag_json_arry = "json_array_req";
     private String url = "http://webcreationsx.com/evisa-apis/languageapi.php";
-    private String ID = "id";
+    private String ID = "id", mCurrentPhotoPath;
     int MY_SOCKET_TIMEOUT_MS = 80000;
     private ListDetail listDetail;
     private String select_destination, select_nationality;
 
-    public static ArrayList<ListDetail>  listDetails = new ArrayList<>();
+    public static ArrayList<ListDetail> listDetails = new ArrayList<>();
     Context context;
     ProgressDialog progressDialog;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
     HomeFragment homeFragment;
 
-    public static ArrayList<String> all_country_list,insurancedays_list,yesno_list,arrival_cities,religion_list,purpose_list,kenya_road_menu_list,
+    public static ArrayList<String> all_country_list, insurancedays_list, yesno_list, arrival_cities, religion_list, purpose_list, kenya_road_menu_list,
 
-            account_type_list,qualification,aquirred_nationality,application_status_list,telephone_type_list,gender_type,dubai_visa_type_list,
+    account_type_list, qualification, aquirred_nationality, application_status_list, telephone_type_list, gender_type, dubai_visa_type_list,
 
-            dubai_airport_type_list,dubai_document_type_list,how_long_list,spouse_nationality_list,kenya_arrival_menu_list,kenya_air_menu_list,
+    dubai_airport_type_list, dubai_document_type_list, how_long_list, spouse_nationality_list, kenya_arrival_menu_list, kenya_air_menu_list,
 
-            iiss_list,proof_of_address,travel_document_type_list,days_stays_us_list,where_stays_us_list,us_going_list,
+    iiss_list, proof_of_address, travel_document_type_list, days_stays_us_list, where_stays_us_list, us_going_list,
 
-            marriage_status_list,present_occupation_list,millitary_police_security_org,visited_before,visa_type_list,residence_status_list,
+    marriage_status_list, present_occupation_list, millitary_police_security_org, visited_before, visa_type_list, residence_status_list,
 
-            past_countries_visited,add_more_list,add_more_list2,fathers_nationality,fathers_birth_country,mothers_nationality,mothers_birth_country,us_visa_purpose_list,
+    past_countries_visited, add_more_list, add_more_list2, fathers_nationality, fathers_birth_country, mothers_nationality, mothers_birth_country, us_visa_purpose_list,
 
-            her_nationality,her_birth_country,kenya_ship_menu_list,kenya_apply_list,srilanka_title_list,srilanka_purpose_list,title_list,
+    her_nationality, her_birth_country, kenya_ship_menu_list, kenya_apply_list, srilanka_title_list, srilanka_purpose_list, title_list,
 
-            iam_list,funds_list,contact_language_list,eta_type_list,passport_type_list,turky_duration_list,turky_entry_list,gcc_list,port_list,
+    iam_list, funds_list, contact_language_list, eta_type_list, passport_type_list, turky_duration_list, turky_entry_list, gcc_list, port_list,
 
-            behrain_detail_purpose_list,armenia_stay_period_list,evisa_type_list,single_visa_type_list,multiple_visa_type_list,uganda_visa_category,
+    behrain_detail_purpose_list, armenia_stay_period_list, evisa_type_list, single_visa_type_list, multiple_visa_type_list, uganda_visa_category,
 
-            immigration_status_list,point_of_entry_list,stay_period_request_list,myanmaar_port_entry_list,myanmaar_accomodation_list,
+    immigration_status_list, point_of_entry_list, stay_period_request_list, myanmaar_port_entry_list, myanmaar_accomodation_list,
 
-            myanmaar_visa_type_list,kuwait_passport_list,kuwait_gcc_country_list,kuwait_education_list,building_type_list,career_of_deseas,
+    myanmaar_visa_type_list, kuwait_passport_list, kuwait_gcc_country_list, kuwait_education_list, building_type_list, career_of_deseas,
 
-            azerbaijan_purpose_list,tajikistan_purpose_list,tajikistan_tuorism_list,tajikistan_private,tajikistan_passport_type,tajikistan_bussiness_list;
-
-
+    azerbaijan_purpose_list, tajikistan_purpose_list, tajikistan_tuorism_list, tajikistan_private, tajikistan_passport_type, tajikistan_bussiness_list;
 
 
     @Override
@@ -132,15 +160,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void populateTable() {
-        runOnUiThread(new Runnable(){
+        runOnUiThread(new Runnable() {
             public void run() {
 
-                try{
+                try {
 
                     all_country_list = new ArrayList<>();
                     insurancedays_list = new ArrayList<>();
                     yesno_list = new ArrayList<>();
-                    arrival_cities   = new ArrayList<>();
+                    arrival_cities = new ArrayList<>();
                     religion_list = new ArrayList<>();
                     purpose_list = new ArrayList<>();
                     account_type_list = new ArrayList<>();
@@ -249,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
                     visa_type_list.add("Visa Type");
 
                     past_countries_visited.clear();
-                    past_countries_visited.add("Have you visited any of these country in the past");
+                    past_countries_visited.add("Have you visited these country");
 //
 //                    add_more_list.clear();
 //                    add_more_list.add("Add More Visisted Country");
@@ -267,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                     her_birth_country.add("His/Her Country of Birth");
 
 
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
             }
@@ -387,4 +415,8 @@ public class MainActivity extends AppCompatActivity {
         // Showing Alert Message
         alertDialog.show();
     }
+
+
 }
+
+

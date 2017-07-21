@@ -131,4 +131,16 @@
     <dimen name="form_credential_text_size">25sp</dimen>
     <dimen name="save_and_continue">65dp</dimen>
 
+    // upload document text size
+    <dimen name="upload_document_text_size">26sp</dimen>
+    <dimen name="upload_document_button_width">170dp</dimen>
+    <dimen name="upload_document_button_height">60dp</dimen>
+    <dimen name="upload_document_layout_height">80dp</dimen>D
+    <dimen name="padding">8dp</dimen>
+    <dimen name="image_name_margin_left">65dp</dimen>
+    <dimen name="section_special_margin">60dp</dimen>
+    <dimen name="proceed_for_payment_bottom_margin">40dp</dimen>
+    <dimen name="all_image_margin_top">30dp</dimen>
+    <dimen name="photo_height">250dp</dimen>
+    <dimen name="photo_width">330dp</dimen>
 </resources>

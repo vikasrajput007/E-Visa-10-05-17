@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static com.android.developer.e_visa.HomeFragment.mater_country_array_list;
 import static com.android.developer.e_visa.MainActivity.all_country_list;
 import static com.android.developer.e_visa.MainActivity.aquirred_nationality;
 import static com.android.developer.e_visa.MainActivity.homeFragmentStack;
@@ -77,8 +78,11 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
 
         try {
             context = getActivity();
+
             sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
             editor = sharedPref.edit();
+
+
             newDate = Calendar.getInstance();
             city_of_arrival = (Spinner) view.findViewById(R.id.city_of_arrival);
             reiligion = (Spinner) view.findViewById(R.id.reiligion);
@@ -116,13 +120,17 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                     if (isFirstSelection) {
                         isFirstSelection = false;
                     } else {
+
                         arrivalItem = (String) parent.getItemAtPosition(position);
 
+                        String arrival_id = String.valueOf(position);
 
+                        System.out.println("id of selected item is:"+arrival_id);
                         // To save destination country name
 
                         // save to session
-                        editor.putString("arrival_city", arrivalItem);
+                       // editor.putString("arrival_city", arrivalItem);
+                        editor.putString("arrival_city", arrival_id);
                         editor.commit();
 
                     }
@@ -153,7 +161,7 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                         // To save destination country name
 
                         // save to session
-                        editor.putString("religion", religion);
+                        editor.putString("religion", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -182,7 +190,7 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                         // To save destination country name
 
                         // save to session
-                        editor.putString("qualificaton", edu_qualification);
+                        editor.putString("qualificaton", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -211,7 +219,7 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                         // To save destination country name
 
                         // save to session
-                        editor.putString("aquiredNationality", aqu_nationality);
+                        editor.putString("aquiredNationality", String.valueOf(position));
                         editor.commit();
 
                         // to enable disable the naturalization
@@ -236,8 +244,8 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
 
 
             // By naturalisation adpater
-            all_country_list.set(0, "please choose your previous nationality");
-            by_naturalizationAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, all_country_list);
+            mater_country_array_list.set(0, "please choose your previous nationality");
+            by_naturalizationAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, mater_country_array_list);
             by_naturalizationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             by_naturalization.setAdapter(by_naturalizationAdapter);
             by_naturalizationAdapter.notifyDataSetChanged();
@@ -253,7 +261,7 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                         // To save destination country name
 
                         // save to session
-                        editor.putString("previous nationality", by_nature);
+                        editor.putString("previous nationality", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -282,7 +290,7 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                         // To save destination country name
 
                         // save to session
-                        editor.putString("proof_of_address", address_proof);
+                        editor.putString("proof_of_address", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -312,52 +320,52 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                 datePickerDialog();
                 break;
             case R.id.personal_save_and_continue:
+//
+                if (arrivalItem.equals("City of arrival in India") || arrivalItem.equals("")) {
 
-//                if (arrivalItem.equals("City of arrival in India") || arrivalItem.equals("")) {
+                    System.out.println("arrival city is checked or not :" + arrivalItem);
+                    Toast.makeText(context, "Please Select Your Arrival City", Toast.LENGTH_SHORT).show();
+                }
+
+                if (email_id.getText().toString().isEmpty()) {
+                    email_id.setError("Please enter email id");
+
+                } else if (!(FormValidation.isValidEmail(email_id.getText().toString().trim()) &&
+                        FormValidation.isValidEmail(retype_email_id.getText().toString().trim()))) {
+
+                    email_id.setError("Please enter correct id");
+                    retype_email_id.setError("Please enter correct id");
+
+                } else if (!(email_id.getText().toString().trim().equals(retype_email_id.getText().toString().trim()))) {
+
+                    email_id.setError("Please type same email id");
+                }
 //
-//                    System.out.println("arrival city is checked or not :" + arrivalItem);
-//                    Toast.makeText(context, "Please Select Your Arrival City", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                if (email_id.getText().toString().isEmpty()) {
-//                    email_id.setError("Please enter email id");
-//
-//                } else if (!(FormValidation.isValidEmail(email_id.getText().toString().trim()) &&
-//                        FormValidation.isValidEmail(retype_email_id.getText().toString().trim()))) {
-//
-//                    email_id.setError("Please enter correct id");
-//                    retype_email_id.setError("Please enter correct id");
-//
-//                } else if (!(email_id.getText().toString().trim().equals(retype_email_id.getText().toString().trim()))) {
-//
-//                    email_id.setError("Please type same email id");
-//                }
-////
-//                else if (religion.equals("Religion") || religion.equals("")) {
-//                    System.out.println("Religion is checked or not :" + religion);
-//
-//                    Toast.makeText(context, "Please Select Your Religion", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                else if (arrival_date.getText().toString().trim().equals("")) {
-//                    Toast.makeText(context, "Please Choose Arrival Date", Toast.LENGTH_SHORT).show();
-//                } else if (edu_qualification.equals("Educational Qualification") || edu_qualification.equals("")) {
-//                    System.out.println("Religion is checked or not :" + edu_qualification);
-//                    Toast.makeText(context, "Please Select Your Qualification", Toast.LENGTH_SHORT).show();
-//                } else if (aqu_nationality.equals("How you accquired your current nationality") || aqu_nationality.equals("")) {
-//                    System.out.println("Religion is checked or not :" + aqu_nationality);
-//                    Toast.makeText(context, "Please Select Your Nationalization", Toast.LENGTH_SHORT).show();
-//                } else if (by_nature.equals("Please Choose Your Previous Nationality")) {
-//                    if (is_nature) {
-//                        System.out.println("Religion is checked or not :" + by_nature);
-//                        Toast.makeText(context, "Please Choose Your Previous Nationality", Toast.LENGTH_SHORT).show();
-//                    }
-//                } else if (address_proof.equals("Proof of Address in your Name(Any One)")) {
-//                    System.out.println("Religion is checked or not :" + address_proof);
-//                    Toast.makeText(context, "Please Choose Address Proof", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                else {
+                else if (religion.equals("Religion") || religion.equals("")) {
+                    System.out.println("Religion is checked or not :" + religion);
+
+                    Toast.makeText(context, "Please Select Your Religion", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (arrival_date.getText().toString().trim().equals("")) {
+                    Toast.makeText(context, "Please Choose Arrival Date", Toast.LENGTH_SHORT).show();
+                } else if (edu_qualification.equals("Educational Qualification") || edu_qualification.equals("")) {
+                    System.out.println("Religion is checked or not :" + edu_qualification);
+                    Toast.makeText(context, "Please Select Your Qualification", Toast.LENGTH_SHORT).show();
+                } else if (aqu_nationality.equals("How you accquired your current nationality") || aqu_nationality.equals("")) {
+                    System.out.println("Religion is checked or not :" + aqu_nationality);
+                    Toast.makeText(context, "Please Select Your Nationalization", Toast.LENGTH_SHORT).show();
+                } else if (by_nature.equals("Please Choose Your Previous Nationality")) {
+                    if (is_nature) {
+                        System.out.println("Religion is checked or not :" + by_nature);
+                        Toast.makeText(context, "Please Choose Your Previous Nationality", Toast.LENGTH_SHORT).show();
+                    }
+                } else if (address_proof.equals("Proof of Address in your Name")) {
+                    System.out.println("Religion is checked or not :" + address_proof);
+                    Toast.makeText(context, "Please Choose Address Proof", Toast.LENGTH_SHORT).show();
+                }
+
+                else {
 
                     // save to session
                     editor.putString("email_id", email_id.getText().toString().trim());
@@ -373,7 +381,7 @@ public class IndiaVisaFormPersonal extends Fragment implements View.OnClickListe
                     mFragmentTransaction.replace(R.id.place_holder_layout, indiaVisaFormFamily);
                     mFragmentTransaction.commit();
 
-//                }
+                }
 
 
                 break;

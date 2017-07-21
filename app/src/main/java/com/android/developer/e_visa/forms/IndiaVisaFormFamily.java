@@ -23,6 +23,7 @@ import com.android.developer.e_visa.utils.FormValidation;
 
 import java.util.ArrayList;
 
+import static com.android.developer.e_visa.HomeFragment.mater_country_array_list;
 import static com.android.developer.e_visa.MainActivity.all_country_list;
 import static com.android.developer.e_visa.MainActivity.fathers_birth_country;
 import static com.android.developer.e_visa.MainActivity.fathers_nationality;
@@ -105,10 +106,11 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
 
         try {
 
-            all_country_list.set(0, "Father's Nationality");
+            mater_country_array_list.set(0,"Father's Nationality");
+            //all_country_list.set(0, "Father's Nationality");
             // father nationality adapter
 
-            fatherNationalityAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, all_country_list);
+            fatherNationalityAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, mater_country_array_list);
             fatherNationalityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             father_nationality.setAdapter(fatherNationalityAdapter);
             fatherNationalityAdapter.notifyDataSetChanged();
@@ -127,7 +129,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
 
                         System.out.println("what is fathers nationality :" + fathers_national);
                         // save to session
-                        editor.putString("father_nationality", fathers_national);
+                        editor.putString("father_nationality", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -142,7 +144,9 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
 
 // father country of birth
 
-            fathers_birth_country = (ArrayList<String>) all_country_list.clone();
+
+            fathers_birth_country = (ArrayList<String>) mater_country_array_list.clone();
+
             fathers_birth_country.set(0, "Father's Birth Country");
             // father nationality adapter
             father_birth_countryAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, fathers_birth_country);
@@ -163,7 +167,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
                         // To save destination country name
 
                         // save to session
-                        editor.putString("father_brth_contry", father_brth_contry);
+                        editor.putString("father_brth_contry", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -178,7 +182,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
 
             // mother nationality adapter
 
-            mothers_nationality = (ArrayList<String>) all_country_list.clone();
+            mothers_nationality = (ArrayList<String>) mater_country_array_list.clone();
             mothers_nationality.set(0, "Mother's Nationality");
             mother_nationalityAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, mothers_nationality);
             mother_nationalityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -197,7 +201,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
                         // To save destination country name
 
                         // save to session
-                        editor.putString("mothr_nationlity", mothr_nationlity);
+                        editor.putString("mothr_nationlity", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -213,7 +217,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
 
             // mother nationality adapter
 
-            mothers_birth_country = (ArrayList<String>) all_country_list.clone();
+            mothers_birth_country = (ArrayList<String>) mater_country_array_list.clone();
             mothers_birth_country.set(0, "Mother's Birth Country");
             mother_birth_countryAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, mothers_birth_country);
             mother_birth_countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -232,7 +236,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
                         // To save destination country name
 
                         // save to session
-                        editor.putString("mthr_brth_contry", mthr_brth_contry);
+                        editor.putString("mthr_brth_contry", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -266,7 +270,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
                         // To save destination country name
 
                         // save to session
-                        editor.putString("marriage_status", marriage_status);
+                        editor.putString("marriage_status", String.valueOf(position));
                         editor.commit();
 
                         System.out.println("marriage status is :"+marriage_status);
@@ -301,7 +305,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
 
 
             // his her nationality adapter
-            her_nationality = (ArrayList<String>) all_country_list.clone();
+            her_nationality = (ArrayList<String>) mater_country_array_list.clone();
             her_nationality.set(0, "His/Her Nationality");
             his_her_nationalityAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, her_nationality);
             his_her_nationalityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -320,11 +324,10 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
                         // To save destination country name
 
                         // save to session
-                        editor.putString("his_her_nationlty", his_her_nationlty);
+                        editor.putString("his_her_nationlty", String.valueOf(position));
                         editor.commit();
 
                     }
-
 
                 }
 
@@ -336,7 +339,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
 
 
             // his her birth adapter
-            her_birth_country = (ArrayList<String>) all_country_list.clone();
+            her_birth_country = (ArrayList<String>) mater_country_array_list.clone();
             her_birth_country.set(0, "His/Her Country of Birth");
             his_her_birth_countryAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, her_birth_country);
             his_her_birth_countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -355,7 +358,7 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
                         // To save destination country name
 
                         // save to session
-                        editor.putString("his_her_brth_contry", his_her_brth_contry);
+                        editor.putString("his_her_brth_contry", String.valueOf(position));
                         editor.commit();
 
                     }
@@ -386,68 +389,81 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
                 System.out.println("is family clicked or not");
                 try {
 
-//                    if (father_name.getText().toString().equals("")) {
-//
-//                        Toast.makeText(context, "Please type your father name", Toast.LENGTH_SHORT).show();
-//
-//                    } else if (fathers_national.equals("Father's Nationality") || fathers_national.equals("")) {
-//                        Toast.makeText(context, "Please Select Fathers Nationality", Toast.LENGTH_SHORT).show();
-//
-//
-//                    } else if (father_birth_place.getText().toString().equals("")) {
-//                        Toast.makeText(context, "Please Type Your Father's birth place", Toast.LENGTH_SHORT).show();
-//
-//                    } else if (father_brth_contry.equals("Father's Birth Country")) {
-//                        Toast.makeText(context, "Please Select Fathers Birth Country", Toast.LENGTH_SHORT).show();
-//
-//                    } else if (mother_name.getText().toString().equals("")) {
-//                        Toast.makeText(context, "Please Type your Mother Name", Toast.LENGTH_SHORT).show();
-//
-//                    } else if (mothr_nationlity.equals("Mother's Nationality")) {
-//                        Toast.makeText(context, "Please Select Mother Nationality", Toast.LENGTH_SHORT).show();
-//
-//                    } else if (mother_birth_place.getText().toString().equals("")) {
-//                        Toast.makeText(context, "Please Type Your Mother's birth place", Toast.LENGTH_SHORT).show();
-//
-//                    } else if (mthr_brth_contry.equals("Mother's Birth Country")) {
-//                        Toast.makeText(context, "Please Select Mother's Birth Country", Toast.LENGTH_SHORT).show();
-//
-//                    }
-//
-//                    else if (marriage_status.equals("Your Marriage Status")) {
-//
-//                        Toast.makeText(context, "Please Select Your Marriage Status", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    else if(!marriage_status.equals("Single")) {
-//
-//                        if (your_spouse_name.getText().toString().equals("")) {
-//                            Toast.makeText(context, "Please Type your Spouse Name", Toast.LENGTH_SHORT).show();
-//
-//                        } else if (his_her_nationlty.equals("His/Her Nationality")) {
-//                            Toast.makeText(context, "Please Select His/Her Nationality", Toast.LENGTH_SHORT).show();
-//
-//                        }  else if (his_her_birth_place.getText().toString().equals("")) {
-//                            Toast.makeText(context, "Please Type his/her birth place", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//
-//                        else if (his_her_brth_contry.equals("His/Her Country of Birth")) {
-//                            Toast.makeText(context, "Please Select His/Her Birth Country", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                        else {
-//
-//                           // System.out.println("form detail" + mother_birth_place.getText().toString().trim());
-//                            editor.putString("father_name", father_name.getText().toString().trim());
-//                            editor.putString("father_birth_place", father_birth_place.getText().toString().trim());
-//                            editor.putString("mother_name", mother_name.getText().toString().trim());
-//                            editor.putString("mother_birth_place", mother_birth_place.getText().toString().trim());
-//                            editor.putString("your_spouse_name", your_spouse_name.getText().toString().trim());
-//                            editor.putString("his_her_birth_place", his_her_birth_place.getText().toString().trim());
-//                            editor.putString("marriage_status", his_her_birth_place.getText().toString().trim());
-//
-//                            editor.commit();
+                    if (father_name.getText().toString().equals("")) {
+
+                        Toast.makeText(context, "Please type your father name", Toast.LENGTH_SHORT).show();
+
+                    } else if (fathers_national.equals("Father's Nationality") || fathers_national.equals("")) {
+                        Toast.makeText(context, "Please Select Fathers Nationality", Toast.LENGTH_SHORT).show();
+
+
+                    } else if (father_birth_place.getText().toString().equals("")) {
+                        Toast.makeText(context, "Please Type Your Father's birth place", Toast.LENGTH_SHORT).show();
+
+                    } else if (father_brth_contry.equals("Father's Birth Country")) {
+                        Toast.makeText(context, "Please Select Fathers Birth Country", Toast.LENGTH_SHORT).show();
+
+                    } else if (mother_name.getText().toString().equals("")) {
+                        Toast.makeText(context, "Please Type your Mother Name", Toast.LENGTH_SHORT).show();
+
+                    } else if (mothr_nationlity.equals("Mother's Nationality")) {
+                        Toast.makeText(context, "Please Select Mother Nationality", Toast.LENGTH_SHORT).show();
+
+                    } else if (mother_birth_place.getText().toString().equals("")) {
+                        Toast.makeText(context, "Please Type Your Mother's birth place", Toast.LENGTH_SHORT).show();
+
+                    } else if (mthr_brth_contry.equals("Mother's Birth Country")) {
+                        Toast.makeText(context, "Please Select Mother's Birth Country", Toast.LENGTH_SHORT).show();
+
+                    } else if (marriage_status.equals("Your Marriage Status")) {
+
+                        Toast.makeText(context, "Please Select Your Marriage Status", Toast.LENGTH_SHORT).show();
+                    }
+
+                    else if (marriage_status.equals("Single")) {
+
+                        editor.putString("father_name", father_name.getText().toString().trim());
+                        editor.putString("father_birth_place", father_birth_place.getText().toString().trim());
+                        editor.putString("mother_name", mother_name.getText().toString().trim());
+                        editor.putString("mother_birth_place", mother_birth_place.getText().toString().trim());
+                        editor.putString("your_spouse_name", your_spouse_name.getText().toString().trim());
+                        editor.putString("his_her_birth_place", his_her_birth_place.getText().toString().trim());
+
+                        editor.commit();
+
+                        indiaVisaFormProfessional = new IndiaVisaFormProfessional();
+                        mFragmentManager = getFragmentManager();
+                        mFragmentTransaction = mFragmentManager.beginTransaction();
+                        homeFragmentStack.add(indiaVisaFormProfessional);
+                        mFragmentTransaction.replace(R.id.place_holder_layout, indiaVisaFormProfessional);
+                        mFragmentTransaction.commit();
+
+                    }
+
+                    else if (!marriage_status.equals("Single")) {
+
+                        if (your_spouse_name.getText().toString().equals("")) {
+                            Toast.makeText(context, "Please Type your Spouse Name", Toast.LENGTH_SHORT).show();
+
+                        } else if (his_her_nationlty.equals("His/Her Nationality")) {
+                            Toast.makeText(context, "Please Select His/Her Nationality", Toast.LENGTH_SHORT).show();
+
+                        } else if (his_her_birth_place.getText().toString().equals("")) {
+                            Toast.makeText(context, "Please Type his/her birth place", Toast.LENGTH_SHORT).show();
+
+                        } else if (his_her_brth_contry.equals("His/Her Country of Birth")) {
+                            Toast.makeText(context, "Please Select His/Her Birth Country", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            // System.out.println("form detail" + mother_birth_place.getText().toString().trim());
+                            editor.putString("father_name", father_name.getText().toString().trim());
+                            editor.putString("father_birth_place", father_birth_place.getText().toString().trim());
+                            editor.putString("mother_name", mother_name.getText().toString().trim());
+                            editor.putString("mother_birth_place", mother_birth_place.getText().toString().trim());
+                            editor.putString("your_spouse_name", your_spouse_name.getText().toString().trim());
+                            editor.putString("his_her_birth_place", his_her_birth_place.getText().toString().trim());
+
+                            editor.commit();
 
                             indiaVisaFormProfessional = new IndiaVisaFormProfessional();
                             mFragmentManager = getFragmentManager();
@@ -455,8 +471,9 @@ public class IndiaVisaFormFamily extends Fragment implements View.OnClickListene
                             homeFragmentStack.add(indiaVisaFormProfessional);
                             mFragmentTransaction.replace(R.id.place_holder_layout, indiaVisaFormProfessional);
                             mFragmentTransaction.commit();
-                      //  }
-                 //   }
+
+                        }
+                    }
 
 
                 } catch (Exception e) {

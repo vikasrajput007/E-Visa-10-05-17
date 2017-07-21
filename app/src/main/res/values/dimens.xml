@@ -127,5 +127,18 @@
     <dimen name="save_and_continue">40dp</dimen>
 
 
+    // upload document text size
+    <dimen name="upload_document_text_size">16sp</dimen>
+    <dimen name="upload_document_button_width">130dp</dimen>
+    <dimen name="upload_document_button_height">45dp</dimen>
+    <dimen name="upload_document_layout_height">60dp</dimen>
+    <dimen name="padding">5dp</dimen>
+    <dimen name="image_name_margin_left">25dp</dimen>
+    <dimen name="section_special_margin">35dp</dimen>
+    <dimen name="proceed_for_payment_bottom_margin">20dp</dimen>
+    <dimen name="all_image_margin_top">20dp</dimen>
+    <dimen name="photo_height">200dp</dimen>
+    <dimen name="photo_width">280dp</dimen>
+
 
 </resources>

@@ -86,7 +86,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1sp"
+                    android:layout_height="1.5sp"
                     android:layout_marginTop="@dimen/country_name_margin_top"
                     android:textColor="@color/background_color">
 
@@ -97,7 +97,12 @@
                     android:id="@+id/description_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="left"
+                    android:layout_gravity="center|left"
+                    android:lineSpacingExtra="5sp"
+                    android:paddingLeft="@dimen/guidline_text_left_padding"
+                    android:paddingRight="@dimen/guidline_text_right_padding"
+                    android:textColor="@color/background_color"
+                    android:textSize="@dimen/requirement_text_size"
                     android:layout_marginTop="@dimen/country_name_margin_top" />
 
                 <LinearLayout
@@ -140,6 +145,7 @@
                         android:id="@+id/guidline_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center|left"
                         android:lineSpacingExtra="5sp"
                         android:textColor="@color/background_color"
                         android:textSize="@dimen/requirement_text_size" />
@@ -331,7 +337,6 @@
                             android:layout_width="@dimen/image_icon_width"
                             android:layout_height="@dimen/image_icon_height"
                             android:layout_marginTop="@dimen/country_name_margin_top"
-                            android:onClick="applyForVisa"
                             android:src="@drawable/fill" />
 
 
@@ -361,7 +366,6 @@
                             android:layout_width="@dimen/image_icon_width"
                             android:layout_height="@dimen/image_icon_height"
                             android:layout_marginTop="@dimen/country_name_margin_top"
-                            android:onClick="applyForVisa"
                             android:src="@drawable/mail" />
 
                         <TextView
@@ -387,7 +391,6 @@
                             android:layout_width="@dimen/image_icon_width"
                             android:layout_height="@dimen/image_icon_height"
                             android:layout_marginTop="@dimen/country_name_margin_top"
-                            android:onClick="applyForVisa"
                             android:src="@drawable/goto1" />
 
                         <TextView

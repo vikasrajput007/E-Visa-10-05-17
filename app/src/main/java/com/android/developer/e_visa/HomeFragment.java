@@ -30,11 +30,19 @@ package com.android.developer.e_visa;
         import com.android.volley.VolleyError;
         import com.android.volley.toolbox.HttpHeaderParser;
         import com.android.volley.toolbox.JsonObjectRequest;
+        import com.android.volley.toolbox.StringRequest;
 
+        import org.json.JSONArray;
         import org.json.JSONException;
         import org.json.JSONObject;
 
         import java.io.UnsupportedEncodingException;
+        import java.util.ArrayList;
+        import java.util.HashMap;
+        import java.util.List;
+        import java.util.Map;
+
+        import retrofit2.http.POST;
 
         import static com.android.developer.e_visa.MainActivity.account_type_list;
         import static com.android.developer.e_visa.MainActivity.application_status_list;
@@ -184,6 +192,7 @@ package com.android.developer.e_visa;
 public class HomeFragment extends Fragment {
     private String tag_json_obj = "tag_json_obj";
     private TextView select_language;
+    private String tag_string_req = "tag_string_req";
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
     private LinearLayout english_language;
@@ -202,6 +211,8 @@ public class HomeFragment extends Fragment {
     Bundle args;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
+    public static ArrayList mater_country_array_list ;
+    private ArrayList<String> master_country = new ArrayList<>();
 
     @Nullable
     @Override
@@ -214,22 +225,20 @@ public class HomeFragment extends Fragment {
 
     private void initView() {
         context = getActivity().getApplicationContext();
-        ;
 
         // there is getActivty() must be required
         sharedPref = context.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
-
+        mater_country_array_list = new ArrayList<String>();
         selectDestination = new SelectDestination();
 
-        progressDialog = new ProgressDialog(context);
+        progressDialog = new ProgressDialog(getActivity());
         args = new Bundle();
 
         select_language = (TextView) view.findViewById(R.id.select_language);
         select_language.setSelected(true);
         gridView = (GridView) view.findViewById(R.id.gv_language);
-
 
         adapterMethod();
 
@@ -247,7 +256,15 @@ public class HomeFragment extends Fragment {
                 listDetail = (ListDetail) gridView.getAdapter().getItem(position);
                 ID = listDetail.getId();
 
+                progressDialog.show();
+                progressDialog.setMessage("Please Wait . . . ");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setCancelable(false);
 
+                // To get the master countries for selection
+                getMasterCountry();
+
+                System.out.println("value of master country response :");
                 getDestinationDetail();
 
                 System.out.println(" is  getDestinationDetail()  started:");
@@ -256,10 +273,15 @@ public class HomeFragment extends Fragment {
                 editor.commit();
 
 
+
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
 
+                        if (progressDialog.isShowing() && progressDialog != null) {
+
+                            progressDialog.dismiss();
+                        }
                         mFragmentManager = getFragmentManager();
                         mFragmentTransaction = mFragmentManager.beginTransaction();
                         args.putString("langid", ID);
@@ -270,13 +292,81 @@ public class HomeFragment extends Fragment {
                         mFragmentTransaction.replace(R.id.place_holder_layout, selectDestination);
                         mFragmentTransaction.commit();
 
-
                     }
-                }, 2000);
+                }, 3000);
 
             }
         });
 
+
+    }
+
+
+    public void getMasterCountry(){
+        try {
+
+            System.out.println("value of master country response : into master country ");
+            String master_url = "http://webcreationsx.com/evisa-apis/mastercountriesapi.php";
+//            progressDialog.show();
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, master_url, new Response.Listener<String>() {
+
+
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+
+
+//                        System.out.println("value of master country response : into response ");
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArray = jsonObject.getJSONArray("arr");
+
+
+                        System.out.println("value of master country response :"+response);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+
+                            JSONObject jObject = jsonArray.getJSONObject(i);
+
+                            master_country.add(jObject.getString("name"));
+
+                            // nat_id_only.add(jObject.getString("id"));
+                        }
+
+                        mater_country_array_list = new ArrayList<>(master_country);
+                    } catch (JSONException e) {
+                    }
+
+                }
+
+
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            })
+
+            {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("langid", ID);
+
+                    return params;
+                }
+
+            };
+
+
+
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy
+                    (MY_SOCKET_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            // Adding request to request queue
+            ApplicationController.getInstance().addToRequestQueue(stringRequest, tag_string_req);
+
+        } catch (Exception e) {
+
+        }
 
     }
 
@@ -296,24 +386,17 @@ public class HomeFragment extends Fragment {
                         @Override
                         public void onResponse(JSONObject response) {
 
-                            System.out.println("total json response is :" + response);
-
                             try {
 
                                 select_destination = response.getString("emptyDestinationOption");
                                 select_nationality = response.getString("emptyNationalityOption");
 
-//                                insurancedays_list.clear();
                                 insurancedays = response.getJSONObject("insurancedays");
                                 insurancedays_list.add(insurancedays.getString("1"));
                                 insurancedays_list.add(insurancedays.getString("2"));
                                 insurancedays_list.add(insurancedays.getString("3"));
                                 insurancedays_list.add(insurancedays.getString("4"));
 
-//                                yesno_list.clear();
-                               // ContractVariable.yesno = response.getJSONObject("yesno");
-//                                yesno_list.add(yesno.getString("0"));
-//                                yesno_list.add(yesno.getString("1"));
 
                                 visited_before.add("Yes");
                                 visited_before.add("No");
@@ -322,7 +405,6 @@ public class HomeFragment extends Fragment {
                                 millitary_police_security_org.add("Yes");
                                 millitary_police_security_org.add("No");
 
-//                                marriage_status_list.clear();
                                 status = response.getJSONObject("Status");
                                 marriage_status_list.add(status.getString("1"));
                                 marriage_status_list.add(status.getString("2"));
@@ -330,7 +412,6 @@ public class HomeFragment extends Fragment {
                                 marriage_status_list.add(status.getString("4"));
                                 marriage_status_list.add(status.getString("5"));
 
-//                                proof_of_address.clear();
                                 proof = response.getJSONObject("Proof");
                                 proof_of_address.add(proof.getString("1"));
                                 proof_of_address.add(proof.getString("2"));
@@ -340,7 +421,6 @@ public class HomeFragment extends Fragment {
                                 proof_of_address.add(proof.getString("6"));
                                 proof_of_address.add(proof.getString("7"));
 
-//                                religion_list.clear();
                                 religion = response.getJSONObject("Religion");
                                 religion_list.add(religion.getString(("1")));
                                 religion_list.add(religion.getString("2"));
@@ -919,5 +999,4 @@ public class HomeFragment extends Fragment {
 
 
     }
-
 }
